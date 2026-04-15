@@ -85,32 +85,32 @@ insert into adopter (adopter_id, first_name, last_name, email, phone, address) v
 insert into adopter (adopter_id, first_name, last_name, email, phone, address) values (40, 'Laina', 'Karchewski', 'lkarchewski13@cornell.edu', '431-333-3384', '26 Garrison Avenue');
 
 -- employee
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (1, 'Felic', 'Gilfether', 'fgilfether0@myspace.com', 'sE1\}/~K|', '503 Mcbride Alley', '3/28/2026');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (1, 'Felic', 'Gilfether', 'fgilfether0@myspace.com', 'sE1\}/~K|', '503 Mcbride Alley', '3/28/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (2, 'Ethelda', 'Golby', 'egolby1@behance.net', 'qT4.FDQ?NNx\F''', '7863 Summerview Hill', '5/12/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (3, 'Briney', 'Cluet', 'bcluet2@sitemeter.com', 'gR0.!ACgBb', '31895 Susan Point', '8/25/2025');
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (4, 'Murdock', 'Samsonsen', 'msamsonsen3@wisc.edu', 'eE9+XNIH.6k', '97 Luster Way', '3/8/2026');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (4, 'Murdock', 'Samsonsen', 'msamsonsen3@wisc.edu', 'eE9+XNIH.6k', '97 Luster Way', '3/8/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (5, 'Guilbert', 'Robbel', 'grobbel4@independent.co.uk', 'dA1(9+Qj_!', '7433 Corry Point', '4/17/2025');
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (6, 'Ansell', 'Vaune', 'avaune5@gravatar.com', 'zX3{zGb<rU', '90 Waxwing Pass', '1/18/2026');
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (7, 'Anselma', 'Drinkhall', 'adrinkhall6@a8.net', 'wO0,"e<+4', '5147 Prairie Rose Point', '2/23/2026');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (6, 'Ansell', 'Vaune', 'avaune5@gravatar.com', 'zX3{zGb<rU', '90 Waxwing Pass', '1/18/2025');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (7, 'Anselma', 'Drinkhall', 'adrinkhall6@a8.net', 'wO0,"e<+4', '5147 Prairie Rose Point', '2/23/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (8, 'Ameline', 'Annis', 'aannis7@nhs.uk', 'wM0<eA/B@', '77199 Arkansas Alley', '12/15/2025');
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (9, 'Gates', 'Wrigley', 'gwrigley8@disqus.com', 'xF1{BF5IL{', '44 Burrows Circle', '2/14/2026');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (9, 'Gates', 'Wrigley', 'gwrigley8@disqus.com', 'xF1{BF5IL{', '44 Burrows Circle', '2/14/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (10, 'Jaclyn', 'Balogh', 'jbalogh9@cargocollective.com', 'yH0*.,,|(y+)qD~M', '91 Butternut Parkway', '10/6/2025');
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (11, 'Golda', 'Lauga', 'glaugaa@psu.edu', 'cB7#hX@aq\>wsr', '0 Lillian Street', '1/28/2026');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (11, 'Golda', 'Lauga', 'glaugaa@psu.edu', 'cB7#hX@aq\>wsr', '0 Lillian Street', '1/28/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (12, 'Feodora', 'Gooderick', 'fgooderickb@dailymotion.com', 'zX6?XL)++xC', '42714 Vera Circle', '7/14/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (13, 'Leilah', 'Haresnape', 'lharesnapec@istockphoto.com', 'kO1+nyGnZXvis(Iw', '207 Bobwhite Alley', '11/9/2025');
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (14, 'Elliott', 'Copley', 'ecopleyd@livejournal.com', 'lG7$$ajJ', '49 Schmedeman Terrace', '1/28/2026');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (14, 'Elliott', 'Copley', 'ecopleyd@livejournal.com', 'lG7$$ajJ', '49 Schmedeman Terrace', '1/28/2005');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (15, 'Teriann', 'Lighterness', 'tlighternesse@1688.com', 'bV9#R=N`qa+(', '2306 Lunder Plaza', '10/2/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (16, 'Donovan', 'Rubra', 'drubraf@wordpress.org', 'zR6|1tRK', '92 Sloan Plaza', '9/12/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (17, 'Kizzie', 'Walenta', 'kwalentag@tiny.cc', 'dV5%d''4q', '3745 Mariners Cove Avenue', '5/5/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (18, 'Rouvin', 'Service', 'rserviceh@baidu.com', 'oP2?"~6_@kRA#Q', '924 Chinook Avenue', '9/14/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (19, 'Ari', 'Skaife d''Ingerthorpe', 'askaifedingerthorpei@tiny.cc', 'gF8@v<XEt', '32505 Linden Way', '9/12/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (20, 'Cortie', 'Grinley', 'cgrinleyj@themeforest.net', 'vD3"2F#16!m(', '0 Gateway Court', '4/17/2025');
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (21, 'Grace', 'Faustin', 'gfaustink@istockphoto.com', 'uI9/@FQ?>{', '38 Leroy Point', '1/2/2026');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (21, 'Grace', 'Faustin', 'gfaustink@istockphoto.com', 'uI9/@FQ?>{', '38 Leroy Point', '1/2/2024');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (22, 'Will', 'Ferras', 'wferrasl@wufoo.com', 'hS5"b._Mw%l%th', '3 Jenna Plaza', '4/15/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (23, 'Sheba', 'Blueman', 'sbluemanm@nhs.uk', 'hH9|k5`hMjyU', '7763 Debra Junction', '9/18/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (24, 'Ronnica', 'Stitfall', 'rstitfalln@ycombinator.com', 'yD5+bO<)', '697 8th Junction', '9/3/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (25, 'Ced', 'Maryon', 'cmaryono@businessweek.com', 'fC6.!u"4/8Rrp1', '22 Sachs Drive', '10/21/2025');
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (26, 'Clarine', 'Chatan', 'cchatanp@npr.org', 'fA3(=l%lDR4/{9T', '6387 Hermina Plaza', '2/21/2026');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (26, 'Clarine', 'Chatan', 'cchatanp@npr.org', 'fA3(=l%lDR4/{9T', '6387 Hermina Plaza', '2/21/2023');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (27, 'Miller', 'Garrud', 'mgarrudq@jimdo.com', 'hF8`*{i+$o', '77856 Superior Avenue', '8/11/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (28, 'Dylan', 'Woodlands', 'dwoodlandsr@shutterfly.com', 'vM5*q`c"d', '672 Fieldstone Pass', '6/5/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (29, 'Wylma', 'Marages', 'wmaragess@stanford.edu', 'nC5_+J4WEji', '93392 Buhler Road', '11/12/2025');
@@ -119,18 +119,131 @@ insert into employee (employee_id, first_name, last_name, email, password, addre
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (32, 'Gerome', 'Benard', 'gbenardv@about.com', 'jM7)N,X}', '44200 Hoffman Way', '5/16/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (33, 'Denny', 'Serginson', 'dserginsonw@sourceforge.net', 'pD9`yH\n?y!lDVp', '42 Eagan Place', '11/17/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (34, 'Virgina', 'Ogborn', 'vogbornx@bizjournals.com', 'aP0&}./pNd%a>x0r', '89 Debra Way', '7/3/2025');
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (35, 'Torrey', 'Northern', 'tnortherny@wikispaces.com', 'lC0<f$A~mjz', '23 Claremont Pass', '3/16/2026');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (35, 'Torrey', 'Northern', 'tnortherny@wikispaces.com', 'lC0<f$A~mjz', '23 Claremont Pass', '3/16/2022');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (36, 'Desiri', 'Anslow', 'danslowz@springer.com', 'tB2}&)7rC', '189 Red Cloud Lane', '9/10/2025');
-insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (37, 'Kirbee', 'Grishmanov', 'kgrishmanov10@ustream.tv', 'kF4}7#DQE0V9D2(', '59019 Logan Lane', '1/11/2026');
+insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (37, 'Kirbee', 'Grishmanov', 'kgrishmanov10@ustream.tv', 'kF4}7#DQE0V9D2(', '59019 Logan Lane', '1/11/2024');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (38, 'Timi', 'Iannini', 'tiannini11@go.com', 'rX3(Hw@MT|?BYn@', '18 Ruskin Pass', '8/12/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (39, 'Dorolice', 'Etherington', 'detherington12@kickstarter.com', 'cY5''fOKsljpvd))E', '844 Columbus Way', '4/22/2025');
 insert into employee (employee_id, first_name, last_name, email, password, address, created_at) values (40, 'Dolley', 'Cheke', 'dcheke13@typepad.com', 'xN6!wLU)Wi~uT', '87288 Kinsman Junction', '5/8/2025');
 
--- TODO
 -- employee_role
 -- audit_log
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (1, 1, 1, 1, 'Updated', 'Medical check-up for dog named Max', 'Feeding schedule for rabbit named Floppy', 'breed', '10/27/2006');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (2, 2, 2, 2, 'Created', 'Medical check-up for dog named Max', 'Adoption of cat named Whiskers', 'breed', '2/8/2023');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (3, 3, 3, 3, 'Status Change', 'Playtime for guinea pig named Peanut', 'Feeding schedule for rabbit named Floppy', 'weight', '10/27/2012');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (4, 4, 4, 4, 'Updated', 'Medical check-up for dog named Max', 'Medical check-up for dog named Max', 'weight', '8/25/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (5, 5, 5, 5, 'Status Change', 'Feeding schedule for rabbit named Floppy', 'Medical check-up for dog named Max', 'weight', '6/20/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (6, 6, 6, 6, 'Deleted', 'Medical check-up for dog named Max', 'Adoption of cat named Whiskers', 'adoption status', '10/5/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (7, 7, 7, 7, 'Status Change', 'Adoption of cat named Whiskers', 'Playtime for guinea pig named Peanut', 'weight', '8/26/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (8, 8, 8, 8, 'Updated', 'Feeding schedule for rabbit named Floppy', 'Feeding schedule for rabbit named Floppy', 'weight', '9/27/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (9, 9, 9, 9, 'Updated', 'Adoption of cat named Whiskers', 'Adoption of cat named Whiskers', 'age', '10/24/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (10, 10, 10, 10, 'Updated', 'Medical check-up for dog named Max', 'Medical check-up for dog named Max', 'breed', '8/13/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (11, 11, 11, 11, 'Updated', 'Adoption of cat named Whiskers', 'Feeding schedule for rabbit named Floppy', 'adoption status', '4/10/2021');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (12, 12, 12, 12, 'Deleted', 'Adoption of cat named Whiskers', 'Medical check-up for dog named Max', 'breed', '9/12/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (13, 13, 13, 13, 'Created', 'Playtime for guinea pig named Peanut', 'Playtime for guinea pig named Peanut', 'breed', '1/29/2023');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (14, 14, 14, 14, 'Created', 'Adoption of cat named Whiskers', 'Feeding schedule for rabbit named Floppy', 'breed', '2/24/2020');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (15, 15, 15, 15, 'Deleted', 'Adoption of cat named Whiskers', 'Playtime for guinea pig named Peanut', 'adoption status', '6/19/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (16, 16, 16, 16, 'Updated', 'Adoption of cat named Whiskers', 'Medical check-up for dog named Max', 'weight', '4/4/2020');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (17, 17, 17, 17, 'Deleted', 'Playtime for guinea pig named Peanut', 'Medical check-up for dog named Max', 'weight', '6/2/2001');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (18, 18, 18, 18, 'Updated', 'Feeding schedule for rabbit named Floppy', 'Playtime for guinea pig named Peanut', 'age', '5/18/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (19, 19, 19, 19, 'Created', 'Medical check-up for dog named Max', 'Playtime for guinea pig named Peanut', 'name', '8/21/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (20, 20, 20, 20, 'Created', 'Medical check-up for dog named Max', 'Adoption of cat named Whiskers', 'age', '10/10/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (21, 21, 21, 21, 'Deleted', 'Feeding schedule for rabbit named Floppy', 'Adoption of cat named Whiskers', 'breed', '7/19/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (22, 22, 22, 22, 'Status Change', 'Medical check-up for dog named Max', 'Feeding schedule for rabbit named Floppy', 'age', '5/7/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (23, 23, 23, 23, 'Updated', 'Playtime for guinea pig named Peanut', 'Feeding schedule for rabbit named Floppy', 'breed', '3/13/2023');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (24, 24, 24, 24, 'Updated', 'Playtime for guinea pig named Peanut', 'Medical check-up for dog named Max', 'adoption status', '5/31/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (25, 25, 25, 25, 'Created', 'Feeding schedule for rabbit named Floppy', 'Adoption of cat named Whiskers', 'breed', '4/22/2014');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (26, 26, 26, 26, 'Created', 'Playtime for guinea pig named Peanut', 'Medical check-up for dog named Max', 'age', '2/27/2022');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (27, 27, 27, 27, 'Status Change', 'Adoption of cat named Whiskers', 'Feeding schedule for rabbit named Floppy', 'adoption status', '2/24/2021');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (28, 28, 28, 28, 'Created', 'Feeding schedule for rabbit named Floppy', 'Adoption of cat named Whiskers', 'name', '10/14/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (29, 29, 29, 29, 'Created', 'Playtime for guinea pig named Peanut', 'Adoption of cat named Whiskers', 'name', '9/7/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (30, 30, 30, 30, 'Deleted', 'Feeding schedule for rabbit named Floppy', 'Playtime for guinea pig named Peanut', 'age', '4/5/2007');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (31, 31, 31, 31, 'Created', 'Playtime for guinea pig named Peanut', 'Playtime for guinea pig named Peanut', 'adoption status', '4/4/2020');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (32, 32, 32, 32, 'Deleted', 'Medical check-up for dog named Max', 'Medical check-up for dog named Max', 'name', '10/12/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (33, 33, 33, 33, 'Status Change', 'Medical check-up for dog named Max', 'Playtime for guinea pig named Peanut', 'weight', '2/3/2016');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (34, 34, 34, 34, 'Status Change', 'Adoption of cat named Whiskers', 'Feeding schedule for rabbit named Floppy', 'weight', '8/24/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (35, 35, 35, 35, 'Updated', 'Medical check-up for dog named Max', 'Playtime for guinea pig named Peanut', 'adoption status', '8/29/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (36, 36, 36, 36, 'Created', 'Feeding schedule for rabbit named Floppy', 'Medical check-up for dog named Max', 'adoption status', '7/9/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (37, 37, 37, 37, 'Updated', 'Playtime for guinea pig named Peanut', 'Medical check-up for dog named Max', 'name', '10/23/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (38, 38, 38, 38, 'Created', 'Feeding schedule for rabbit named Floppy', 'Medical check-up for dog named Max', 'breed', '3/7/2015');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (39, 39, 39, 39, 'Deleted', 'Feeding schedule for rabbit named Floppy', 'Feeding schedule for rabbit named Floppy', 'adoption status', '9/9/2025');
+insert into audit_log (log_id, animal_id, employee_id, adopter_id, action, old_value, new_value, field_changed, changed_at) values (40, 40, 40, 40, 'Updated', 'Adoption of cat named Whiskers', 'Medical check-up for dog named Max', 'adoption status', '1/24/2020');
+
 -- application
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (1, 1, 1, 'Completed', 'Loves belly rubs', '5/28/2006', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (2, 2, 2, 'Under Review', 'Needs a yard to run', '8/31/2023', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (3, 3, 3, 'Pending', 'Loves belly rubs', '4/2/2012', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (4, 4, 4, 'Approved', 'Needs a yard to run', '4/26/2020', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (5, 5, 5, 'Pending', 'Shy at first', '5/10/2004', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (6, 6, 6, 'Denied', 'Needs a yard to run', '6/9/2011', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (7, 7, 7, 'Approved', 'House trained', '7/11/2022', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (8, 8, 8, 'Denied', 'Good with kids', '4/24/2006', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (9, 9, 9, 'Pending', 'House trained', '2/1/2024', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (10, 10, 10, 'Under Review', 'House trained', '8/10/2016', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (11, 11, 11, 'Under Review', 'Needs a yard to run', '11/10/2024', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (12, 12, 12, 'Withdrawn', 'House trained', '8/2/2008', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (13, 13, 13, 'Approved', 'Loves belly rubs', '6/3/2018', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (14, 14, 14, 'Approved', 'House trained', '8/11/2018', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (15, 15, 15, 'Completed', 'Loves belly rubs', '2/5/2003', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (16, 16, 16, 'Under Review', 'Shy at first', '7/16/2006', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (17, 17, 17, 'Approved', 'Good with kids', '10/8/2005', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (18, 18, 18, 'Denied', 'House trained', '6/5/2000', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (19, 19, 19, 'Withdrawn', 'Good with kids', '4/28/2021', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (20, 20, 20, 'Withdrawn', 'Loves belly rubs', '3/25/2020', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (21, 21, 21, 'Completed', 'Good with kids', '6/11/2006', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (22, 22, 22, 'Pending', 'Good with kids', '11/15/2007', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (23, 23, 23, 'Approved', 'Good with kids', '10/7/2004', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (24, 24, 24, 'Withdrawn', 'Shy at first', '9/7/2024', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (25, 25, 25, 'Under Review', 'House trained', '6/6/2011', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (26, 26, 26, 'Withdrawn', 'Shy at first', '3/11/2022', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (27, 27, 27, 'Approved', 'Shy at first', '3/23/2016', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (28, 28, 28, 'Approved', 'Shy at first', '1/7/2019', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (29, 29, 29, 'Completed', 'Needs a yard to run', '3/29/2004', '4/15/2025');
+insert into application (application_id, adopter_id, animal_id, status, notes, submission_date, decision_date) values (30, 30, 30, 'Pending', 'Good with kids', '2/28/2003', '4/15/2025');
+
+
 -- medical_record
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (1, 'Vomiting after meals', 'Jane Smith', '10/13/2012', 'Medication', 1);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (2, 'Vomiting after meals', 'Michael Johnson', '3/15/2013', 'Checkup', 2);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (3, 'Limping on left hind leg', 'Robert Brown', '4/2/2008', 'Medication', 3);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (4, 'Heart rate normal', 'Emily Davis', '4/18/2012', 'Checkup', 4);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (5, 'Heart rate normal', 'Emily Davis', '12/17/2014', 'Vaccination', 5);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (6, 'Vomiting after meals', 'Michael Johnson', '6/22/2011', 'Medication', 6);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (7, 'Loss of appetite', 'Michael Johnson', '1/26/2018', 'Surgery', 7);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (8, 'Sneezing frequently', 'Michael Johnson', '5/19/2019', 'Treatment', 8);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (9, 'Sneezing frequently', 'Emily Davis', '8/8/2018', 'Vaccination', 9);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (10, 'Heart rate normal', 'Robert Brown', '11/25/2025', 'Spray/Neuter', 10);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (11, 'Vomiting after meals', 'Jane Smith', '2/11/2007', 'Spray/Neuter', 11);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (12, 'Sneezing frequently', 'John Doe', '8/24/2022', 'Checkup', 12);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (13, 'Limping on left hind leg', 'Robert Brown', '2/18/2005', 'Spray/Neuter', 13);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (14, 'Vomiting after meals', 'Michael Johnson', '1/19/2007', 'Surgery', 14);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (15, 'Heart rate normal', 'Michael Johnson', '9/24/2001', 'Vaccination', 15);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (16, 'Limping on left hind leg', 'John Doe', '11/30/2000', 'Treatment', 16);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (17, 'Limping on left hind leg', 'John Doe', '3/30/2024', 'Treatment', 17);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (18, 'Vomiting after meals', 'John Doe', '12/14/2008', 'Treatment', 18);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (19, 'Limping on left hind leg', 'Jane Smith', '1/18/2024', 'Checkup', 19);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (20, 'Loss of appetite', 'Jane Smith', '1/9/2016', 'Vaccination', 20);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (21, 'Vomiting after meals', 'Michael Johnson', '12/18/2005', 'Surgery', 21);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (22, 'Vomiting after meals', 'Jane Smith', '11/24/2001', 'Spray/Neuter', 22);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (23, 'Limping on left hind leg', 'Emily Davis', '2/24/2020', 'Surgery', 23);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (24, 'Loss of appetite', 'John Doe', '11/18/2024', 'Vaccination', 24);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (25, 'Loss of appetite', 'Michael Johnson', '2/18/2005', 'Medication', 25);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (26, 'Loss of appetite', 'Emily Davis', '3/23/2002', 'Surgery', 26);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (27, 'Heart rate normal', 'Robert Brown', '10/13/2000', 'Surgery', 27);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (28, 'Vomiting after meals', 'Emily Davis', '3/20/2018', 'Vaccination', 28);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (29, 'Sneezing frequently', 'Robert Brown', '7/18/2007', 'Vaccination', 29);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (30, 'Vomiting after meals', 'Jane Smith', '11/21/2005', 'Vaccination', 30);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (31, 'Heart rate normal', 'Jane Smith', '10/3/2006', 'Surgery', 31);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (32, 'Vomiting after meals', 'Robert Brown', '1/9/2006', 'Vaccination', 32);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (33, 'Loss of appetite', 'Jane Smith', '11/9/2020', 'Surgery', 33);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (34, 'Limping on left hind leg', 'Michael Johnson', '10/20/2023', 'Checkup', 34);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (35, 'Vomiting after meals', 'Michael Johnson', '8/12/2001', 'Medication', 35);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (36, 'Heart rate normal', 'John Doe', '11/18/2010', 'Treatment', 36);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (37, 'Loss of appetite', 'John Doe', '3/6/2008', 'Surgery', 37);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (38, 'Heart rate normal', 'Michael Johnson', '1/16/2020', 'Medication', 38);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (39, 'Heart rate normal', 'Michael Johnson', '3/3/2005', 'Surgery', 39);
+insert into medical_record (record_id, notes, practitioner_name, admin_date, category, animal_id) values (40, 'Heart rate normal', 'Robert Brown', '12/19/2015', 'Treatment', 40);
+
 -- foster_placement
 -- compatibility_quiz
 -- quiz_rec
