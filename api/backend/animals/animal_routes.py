@@ -175,9 +175,9 @@ def get_duplicate_animals():
 
 
 # ------------------------------------------------------------
-# GET /a/<animal_id>
+# GET /animals/<animal_id>
 # Return full animal profile including all medical records.
-# Example: /a/1
+# Example: /animals/1
 # User stories: [Lisa-5]
 # ------------------------------------------------------------
 @animals.route("/<int:animal_id>", methods=["GET"])
