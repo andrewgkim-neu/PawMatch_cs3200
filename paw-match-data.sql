@@ -289,7 +289,132 @@ insert into monthly_report (report_id, template_id, report_month, generated_date
 insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (38, 371, '10/14/2009', '12/17/2006', 528, 21.85, 282.56);
 insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (39, 849, '10/22/2005', '10/30/2016', 443, 173.56, 12.9);
 insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (40, 817, '9/25/2015', '9/20/2014', 517, 201.5, 260.24);
--- adoption
--- meet_appointment
--- success_story
 
+
+-- adoption
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (1, 58, 288, '9/5/2003', 'Adopted', 618, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (2, 521, 36, '9/5/2002', 'Adopted', 900, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (3, 710, 529, '11/1/2016', 'Returned', 716, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (4, 318, 131, '12/28/2019', 'Fostered', 477, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (5, 982, 769, '3/19/2004', 'Fostered', 685, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (6, 160, 809, '6/23/2006', 'Returned', 900, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (7, 71, 337, '4/4/2000', 'Returned', 158, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (8, 143, 229, '1/18/2007', 'Adopted', 11, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (9, 825, 831, '3/14/2014', 'Returned', 378, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (10, 773, 427, '11/21/2006', 'Adopted', 491, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (11, 274, 133, '8/5/2024', 'Fostered', 642, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (12, 986, 387, '3/30/2002', 'Fostered', 286, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (13, 533, 729, '5/8/2006', 'Adopted', 277, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (14, 570, 927, '4/7/2004', 'Fostered', 22, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (15, 186, 440, '6/13/2021', 'Adopted', 504, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (16, 369, 914, '12/17/2003', 'Returned', 826, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (17, 348, 270, '9/2/2025', 'Adopted', 304, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (18, 370, 131, '8/28/2020', 'Adopted', 556, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (19, 925, 40, '2/3/2000', 'Adopted', 549, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (20, 205, 115, '10/20/2018', 'Fostered', 682, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (21, 583, 935, '11/17/2003', 'Returned', 17, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (22, 103, 224, '7/19/2003', 'Adopted', 527, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (23, 10, 210, '2/9/2017', 'Fostered', 908, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (24, 350, 952, '12/26/2003', 'Fostered', 379, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (25, 160, 62, '5/15/2002', 'Adopted', 279, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (26, 760, 372, '1/28/2001', 'Adopted', 37, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (27, 286, 890, '12/19/2012', 'Returned', 861, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (28, 500, 911, '8/13/2003', 'Returned', 209, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (29, 33, 863, '2/20/2014', 'Adopted', 811, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (30, 123, 371, '4/29/2024', 'Fostered', 805, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (31, 396, 877, '6/1/2021', 'Fostered', 216, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (32, 958, 282, '11/15/2005', 'Adopted', 441, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (33, 100, 745, '7/27/2024', 'Fostered', 779, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (34, 943, 388, '11/22/2016', 'Returned', 60, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (35, 890, 429, '8/26/2011', 'Fostered', 107, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (36, 426, 590, '8/23/2002', 'Adopted', 532, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (37, 353, 802, '10/13/2000', 'Fostered', 947, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (38, 907, 156, '2/2/2024', 'Adopted', 302, true);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (39, 86, 731, '1/15/2023', 'Adopted', 672, false);
+insert into adoption (adoption_id, application_id, report_id, adoption_date, outcome, days_to_adopt, return_flag) values (40, 228, 234, '10/23/2000', 'Returned', 666, true);
+
+
+-- meet_appointment
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (1, 124, 457, 'Completed', '12/26/2011', 'pellentesque ultrices phasellus id sapien in sapien');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (2, 861, 248, 'No Show', '7/20/2013', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (3, 678, 200, 'Cancelled', '2/15/2004', 'ipsum primis in faucibus orci luctus et ultrices posuere');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (4, 995, 577, 'Cancelled', '7/4/2012', 'mauris lacinia sapien quis libero');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (5, 358, 540, 'Cancelled', '12/14/2023', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (6, 199, 346, 'Scheduled', '11/13/2017', 'nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (7, 84, 645, 'No Show', '10/8/2012', 'quis turpis sed ante vivamus tortor');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (8, 89, 23, 'Scheduled', '7/31/2007', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (9, 743, 36, 'Scheduled', '8/27/2001', 'risus praesent lectus vestibulum quam sapien varius ut blandit non');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (10, 858, 278, 'No Show', '9/5/2007', 'in ante vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (11, 746, 260, 'No Show', '1/6/2012', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (12, 386, 471, 'No Show', '11/9/2021', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (13, 863, 135, 'Cancelled', '2/9/2023', 'feugiat et eros vestibulum ac est lacinia');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (14, 94, 17, 'No Show', '12/30/2021', 'pretium iaculis diam erat fermentum justo');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (15, 446, 610, 'Scheduled', '12/23/2003', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (16, 186, 318, 'Scheduled', '5/31/2012', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (17, 107, 678, 'Scheduled', '6/15/2017', 'potenti nullam porttitor lacus at');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (18, 371, 442, 'Completed', '1/23/2000', 'id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (19, 94, 437, 'Scheduled', '1/17/2007', 'sapien placerat ante nulla justo aliquam quis turpis eget');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (20, 364, 573, 'Cancelled', '3/12/2011', 'penatibus et magnis dis parturient montes');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (21, 231, 17, 'Cancelled', '12/12/2005', 'ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (22, 241, 866, 'No Show', '11/25/2017', 'nisi at nibh in hac habitasse');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (23, 310, 317, 'No Show', '6/5/2010', 'et magnis dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (24, 121, 465, 'Completed', '7/29/2023', 'consequat lectus in est risus auctor sed tristique in tempus');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (25, 104, 445, 'Completed', '8/19/2011', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (26, 990, 503, 'Cancelled', '11/6/2010', 'sit amet consectetuer adipiscing elit proin interdum mauris');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (27, 471, 155, 'Completed', '12/25/2006', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (28, 820, 436, 'Scheduled', '12/10/2001', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (29, 197, 613, 'Scheduled', '6/1/2007', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (30, 458, 851, 'Completed', '8/11/2025', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (31, 889, 156, 'Completed', '8/26/2022', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (32, 523, 115, 'No Show', '5/19/2002', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (33, 198, 63, 'Completed', '7/11/2014', 'erat fermentum justo nec condimentum neque sapien placerat ante nulla');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (34, 293, 183, 'No Show', '11/16/2013', 'turpis a pede posuere nonummy integer non velit donec');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (35, 427, 862, 'Cancelled', '5/19/2019', 'quisque ut erat curabitur gravida nisi at nibh in hac habitasse platea');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (36, 950, 900, 'Completed', '8/12/2021', 'amet turpis elementum ligula vehicula');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (37, 271, 811, 'Completed', '4/5/2024', 'erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate');
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (38, 206, 737, 'Completed', '7/20/2017', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (39, 209, 611, 'Scheduled', '11/7/2021', null);
+insert into adoption (appointment_id, adopter_id, animal_id, status, scheduled_for, notes) values (40, 190, 570, 'Scheduled', '5/23/2008', 'mi integer ac neque duis bibendum morbi non');
+
+
+-- success_story
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (1, 213, 270, 6, false, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', '9/30/2016');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (2, 352, 300, 9, false, 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.', '3/22/2006');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (3, 337, 989, 10, true, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', '8/18/2019');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (4, 272, 524, 2, true, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.', '1/23/2025');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (5, 536, 158, 1, true, 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', '4/19/2001');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (6, 285, 669, 6, false, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.', '9/20/2009');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (7, 10, 375, 8, true, 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', '3/22/2004');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (8, 248, 285, 4, true, 'Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.', '10/16/2001');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (9, 118, 584, 4, false, 'Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.', '11/30/2019');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (10, 216, 299, 3, false, 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.', '12/2/2014');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (11, 731, 336, 7, true, 'Fusce consequat. Nulla nisl. Nunc nisl.', '2/24/2020');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (12, 916, 163, 8, true, 'In congue. Etiam justo. Etiam pretium iaculis justo.', '7/22/2024');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (13, 956, 131, 4, false, 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', '10/31/2003');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (14, 819, 605, 2, false, 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', '9/19/2009');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (15, 903, 837, 6, false, 'Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.', '12/1/2001');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (16, 392, 750, 5, true, 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', '4/13/2016');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (17, 638, 386, 8, false, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', '12/5/2004');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (18, 698, 808, 8, true, 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.', '3/5/2011');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (19, 576, 434, 6, false, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', '8/10/2025');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (20, 363, 315, 3, true, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', '11/10/2017');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (21, 86, 714, 3, true, 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.', '4/24/2015');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (22, 526, 754, 7, true, 'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', '12/8/2002');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (23, 827, 393, 7, true, 'Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', '10/20/2010');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (24, 120, 590, 4, true, 'In congue. Etiam justo. Etiam pretium iaculis justo.', '9/22/2004');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (25, 659, 609, 10, true, 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', '5/14/2008');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (26, 204, 12, 5, true, 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.', '4/12/2018');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (27, 918, 905, 8, true, 'Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', '1/19/2023');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (28, 543, 858, 7, true, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.', '8/16/2017');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (29, 710, 385, 10, true, 'Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.', '6/3/2009');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (30, 294, 409, 2, true, 'Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.', '5/25/2012');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (31, 20, 527, 4, true, 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.', '7/19/2007');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (32, 483, 257, 5, false, 'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', '9/9/2021');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (33, 737, 997, 8, false, 'Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.', '1/24/2008');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (34, 796, 471, 9, true, 'Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.', '11/25/2020');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (35, 515, 910, 5, false, 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', '10/4/2000');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (36, 138, 347, 2, true, 'Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', '4/6/2003');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (37, 658, 691, 9, false, 'Fusce consequat. Nulla nisl. Nunc nisl.', '11/16/2025');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (38, 954, 464, 10, true, 'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', '5/28/2018');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (39, 105, 22, 7, false, 'Sed ante. Vivamus tortor. Duis mattis egestas metus.', '12/23/2006');
+insert into adoption (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (40, 281, 67, 4, true, 'Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', '4/27/2023');
