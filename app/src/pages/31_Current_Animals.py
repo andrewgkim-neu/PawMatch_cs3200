@@ -54,11 +54,7 @@ for i in range(0, len(filtered), cols_per_row):
             with col:
                 with st.container(border=True):
                     # Use a placeholder image if no photo URL exists
-                    photo = animal.get("assets/animal.png", None)
-                    if photo:
-                        st.image(photo, use_container_width=True)
-                    else:
-                        st.image("https://placehold.co/300x200?text=No+Photo", use_container_width=True)
+                    st.image("assets/animal.png", use_container_width=True)
 
                     st.subheader(animal.get("name", "Unknown"))
                     st.write(f"**Species:** {animal.get('species', 'N/A')}")
