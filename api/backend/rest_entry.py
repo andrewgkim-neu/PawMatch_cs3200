@@ -4,6 +4,9 @@ import os
 import logging
 
 from backend.animals.animal_routes import animals
+from backend.adopters.adopter_routes import adopters
+from backend.admin.admin_routes import admin
+from backend.analytics.analytics_routes import analytics
 from backend.db_connection import init_app as init_db
 from backend.simple.simple_routes import simple_routes
 from backend.ngos.ngo_routes import ngos
@@ -38,6 +41,9 @@ def create_app():
     app.logger.info("create_app(): registering blueprints")
     app.register_blueprint(simple_routes)
     app.register_blueprint(ngos, url_prefix="/ngo")
-    app.register_blueprint(animals, url_prefix="/animals")  # changed from '/a'
+    app.register_blueprint(animals, url_prefix="/animals")
+    app.register_blueprint(adopters, url_prefix="/adopters")
+    app.register_blueprint(admin, url_prefix="/admin")
+    app.register_blueprint(analytics, url_prefix="/analytics")
 
     return app
