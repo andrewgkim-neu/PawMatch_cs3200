@@ -55,7 +55,7 @@ if st.button("Act as Lisa, an Adopter",
     logger.info("Logging in as an Adopter")
     st.switch_page('pages/00_Adopter.py')
 
-if st.button('Act as Mohammad, a USAID Worker',
+if st.button('Act as John, a System Admin',
              type='primary',
              use_container_width=True):
     st.session_state['authenticated'] = True
@@ -63,7 +63,15 @@ if st.button('Act as Mohammad, a USAID Worker',
     st.session_state['first_name'] = 'Mohammad'
     st.switch_page('pages/10_USAID_Worker_Home.py')
 
-if st.button('Act as System Administrator',
+if st.button('Act as Lucy, a Data Analyst',
+             type='primary',
+             use_container_width=True):
+    st.session_state['authenticated'] = True
+    st.session_state['role'] = 'administrator'
+    st.session_state['first_name'] = 'SysAdmin'
+    st.switch_page('pages/20_Admin_Home.py')
+
+if st.button('Act as Ayla, a Shleter Staff',
              type='primary',
              use_container_width=True):
     st.session_state['authenticated'] = True
