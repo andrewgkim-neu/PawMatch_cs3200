@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 import logging
 
+from backend.animals.animal_routes import animals
 from backend.db_connection import init_app as init_db
 from backend.simple.simple_routes import simple_routes
 from backend.ngos.ngo_routes import ngos
@@ -37,5 +38,6 @@ def create_app():
     app.logger.info("create_app(): registering blueprints")
     app.register_blueprint(simple_routes)
     app.register_blueprint(ngos, url_prefix="/ngo")
+    app.register_blueprint(animals, url_prefix="/animals")  # changed from '/a'
 
     return app
