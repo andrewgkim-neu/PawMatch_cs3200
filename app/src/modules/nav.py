@@ -12,70 +12,76 @@ def home_nav():
 
 
 def about_page_nav():
-    st.sidebar.page_link("pages/30_About.py", label="About", icon="🧠")
+    st.sidebar.page_link("pages/40_About.py", label="About", icon="🧠")
 
 
-# ---- Role: pol_strat_advisor ------------------------------------------------
+# ---- Role: adopter ------------------------------------------------
 
-def pol_strat_home_nav():
+def adopter_home_nav():
     st.sidebar.page_link(
-        "pages/00_Pol_Strat_Home.py", label="Political Strategist Home", icon="👤"
+        "pages/00_Adopter.py", label="Adopter Home", icon="👤"
     )
 
-
-def world_bank_viz_nav():
+def specific_animal_info_nav():
     st.sidebar.page_link(
-        "pages/01_World_Bank_Viz.py", label="World Bank Visualization", icon="🏦"
+        "pages/01_Specific_Animal_Info.py", label="All About...", icon="🐶"
     )
 
-
-def map_demo_nav():
-    st.sidebar.page_link("pages/02_Map_Demo.py", label="Map Demonstration", icon="🗺️")
-
-
-# ---- Role: usaid_worker -----------------------------------------------------
-
-def usaid_worker_home_nav():
+def find_match_nav():
     st.sidebar.page_link(
-        "pages/10_USAID_Worker_Home.py", label="USAID Worker Home", icon="🏠"
+        "pages/02_Find_Match.py", label="Find Your Perfect Match", icon="📝"
     )
 
+# ---- Role: system_admin -----------------------------------------------------
 
-def ngo_directory_nav():
-    st.sidebar.page_link("pages/14_NGO_Directory.py", label="NGO Directory", icon="📁")
-
-
-def add_ngo_nav():
-    st.sidebar.page_link("pages/15_Add_NGO.py", label="Add New NGO", icon="➕")
-
-
-def prediction_nav():
+def system_admin_nav():
     st.sidebar.page_link(
-        "pages/11_Prediction.py", label="Regression Prediction", icon="📈"
+        "pages/10_System_Admin_Home.py", label="System Admin Home", icon="🏠"
     )
 
+def add_new_animal_nav():
+    st.sidebar.page_link("pages/14_Add_New_Animal.py", label="Input New Animal", icon="📁")
 
-def api_test_nav():
-    st.sidebar.page_link("pages/12_API_Test.py", label="Test the API", icon="🛜")
+
+def add_new_employee_nav():
+    st.sidebar.page_link("pages/15_Add_New_Employee.py", label="Add New Employee", icon="➕")
+
+# ---- Role: data_analyst ----------------------------------------------------
+
+def data_analyst_home_nav():
+    st.sidebar.page_link("pages/20_Data_Analyst_Home.py", label="Data Analyst", icon="💻")
 
 
-def classification_nav():
+def dashboard_nav():
     st.sidebar.page_link(
-        "pages/13_Classification.py", label="Classification Demo", icon="🌺"
+        "pages/21_Dashboard.py", label="Dashboard", icon="📊"
     )
 
-
-# ---- Role: administrator ----------------------------------------------------
-
-def admin_home_nav():
-    st.sidebar.page_link("pages/20_Admin_Home.py", label="System Admin", icon="🖥️")
-
-
-def ml_model_mgmt_nav():
+def report_nav():
     st.sidebar.page_link(
-        "pages/21_ML_Model_Mgmt.py", label="ML Model Management", icon="🏢"
+        "pages/22_Report.py", label="Report", icon="📋"
     )
 
+# ---- Role: shelter_staff ----------------------------------------------------
+
+def shelter_staff_home_nav():
+    st.sidebar.page_link("pages/30_Shelter_Staff_Home.py", label="Shelter Staff", icon="💼")
+
+
+def current_animals_nav():
+    st.sidebar.page_link(
+        "pages/31_Current_Animals.py", label="Current Animals in Shelter", icon="🐹"
+    )
+
+def adoption_applications_nav():
+    st.sidebar.page_link(
+        "pages/32_Adoption_Applications.py", label="Adoption Applications", icon="📋"
+    )
+
+def medical_records_nav():
+    st.sidebar.page_link(
+        "pages/33_Medical_Records.py", label="Animal Medical Records", icon="💉"
+    )
 
 # ---- Sidebar assembly -------------------------------------------------------
 
@@ -98,22 +104,27 @@ def SideBarLinks(show_home=False):
 
     if st.session_state["authenticated"]:
 
-        if st.session_state["role"] == "pol_strat_advisor":
-            pol_strat_home_nav()
-            world_bank_viz_nav()
-            map_demo_nav()
+        if st.session_state["role"] == "adopter":
+            adopter_home_nav()
+            specific_animal_info_nav()
+            find_match_nav()
 
-        if st.session_state["role"] == "usaid_worker":
-            usaid_worker_home_nav()
-            ngo_directory_nav()
-            add_ngo_nav()
-            prediction_nav()
-            api_test_nav()
-            classification_nav()
+        if st.session_state["role"] == "system_admin":
+            system_admin_nav()
+            add_new_animal_nav()
+            add_new_employee_nav()
 
-        if st.session_state["role"] == "administrator":
-            admin_home_nav()
-            ml_model_mgmt_nav()
+
+        if st.session_state["role"] == "data_analyst":
+            data_analyst_home_nav()
+            dashboard_nav()
+            report_nav()
+
+        if st.session_state["role"] == "shelter_staff":
+            shelter_staff_home_nav()
+            current_animals_nav()
+            adoption_applications_nav()
+            medical_records_nav()
 
     # About link appears at the bottom for all roles
     about_page_nav()
