@@ -249,6 +249,46 @@ insert into medical_record (record_id, notes, practitioner_name, admin_date, cat
 -- quiz_rec
 -- report_template
 -- monthly_report
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (1, 529, '1/26/2007', '6/21/2011', 274, 75.15, 197.89);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (2, 248, '7/12/2010', '5/13/2016', 24, 213.74, 118.82);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (3, 43, '12/30/2025', '2/21/2008', 489, 270.38, 158.14);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (4, 100, '1/25/2019', '4/23/2023', 603, 123.47, 125.44);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (5, 567, '6/2/2001', '1/29/2009', 696, 83.32, 289.43);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (6, 47, '5/3/2025', '8/10/2012', 72, 110.02, 56.61);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (7, 230, '2/5/2001', '10/13/2017', 908, 345.4, 342.61);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (8, 20, '11/4/2012', '12/20/2012', 102, 23.21, 159.35);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (9, 155, '5/9/2010', '4/25/2022', 978, 197.81, 18.45);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (10, 593, '8/9/2023', '11/17/2024', 918, 155.37, 162.31);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (11, 293, '10/14/2006', '7/15/2004', 742, 66.26, 219.13);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (12, 723, '6/7/2003', '9/19/2006', 128, 145.93, 83.28);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (13, 261, '11/23/2019', '7/15/2019', 934, 233.31, 153.7);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (14, 720, '1/15/2018', '6/23/2005', 925, 100.02, 178.93);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (15, 162, '10/3/2007', '8/1/2017', 33, 11.71, 54.77);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (16, 709, '10/4/2003', '10/4/2006', 622, 143.46, 64.42);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (17, 811, '5/7/2024', '5/15/2008', 246, 71.07, 237.35);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (18, 363, '5/8/2005', '5/27/2001', 982, 264.39, 261.04);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (19, 786, '9/22/2014', '7/11/2004', 429, 5.16, 345.7);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (20, 106, '6/9/2002', '11/19/2015', 418, 205.6, 5.68);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (21, 405, '9/5/2003', '8/11/2003', 151, 41.75, 181.32);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (22, 172, '4/7/2006', '6/20/2020', 576, 156.94, 187.18);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (23, 824, '3/20/2003', '11/13/2010', 967, 256.07, 284.85);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (24, 552, '8/15/2006', '7/10/2008', 329, 322.27, 266.91);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (25, 759, '3/22/2011', '10/29/2002', 188, 194.55, 51.71);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (26, 659, '7/19/2011', '9/7/2013', 437, 61.78, 15.42);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (27, 922, '12/9/2013', '3/7/2003', 683, 203.51, 258.17);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (28, 850, '7/24/2017', '1/30/2023', 104, 20.48, 119.69);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (29, 986, '2/22/2024', '3/3/2007', 89, 213.92, 190.52);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (30, 924, '12/5/2002', '10/30/2025', 794, 174.15, 6.65);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (31, 806, '12/13/2001', '7/26/2013', 60, 111.26, 247.7);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (32, 173, '10/4/2003', '8/25/2022', 306, 185.27, 194.29);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (33, 895, '12/6/2023', '11/25/2012', 251, 345.99, 80.82);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (34, 574, '5/21/2002', '10/8/2023', 704, 220.83, 264.6);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (35, 102, '3/30/2014', '6/25/2001', 423, 26.73, 14.85);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (36, 735, '7/16/2008', '12/31/2009', 275, 36.66, 121.26);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (37, 619, '5/10/2023', '5/25/2022', 655, 64.46, 193.34);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (38, 371, '10/14/2009', '12/17/2006', 528, 21.85, 282.56);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (39, 849, '10/22/2005', '10/30/2016', 443, 173.56, 12.9);
+insert into monthly_report (report_id, template_id, report_month, generated_date, total_adopted, avg_days_to_adopt, avg_length_of_stay) values (40, 817, '9/25/2015', '9/20/2014', 517, 201.5, 260.24);
 -- adoption
 -- meet_appointment
 -- success_story
