@@ -12,9 +12,12 @@ st.set_page_config(layout='wide')
 
 # Call the SideBarLinks from the nav module in the modules directory
 SideBarLinks()
+st.sidebar.header("Filter")
+species = st.sidebar.multiselect("Species", ["Dog", "Cat", "Bunny", "Other"])
+breed = st.sidebar.multiselect("Breed", ["Golden Retreiver", "German Shepherd", ""])
 
 # set the header of the page
-st.header('World Bank Data')
+st.header('Discover the Animals')
 
 # You can access the session state to make a more customized/personalized app experience
 st.write(f"### Hi, {st.session_state['first_name']}.")
