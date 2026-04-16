@@ -6,9 +6,9 @@ animals = Blueprint("animals", __name__)
 
 
 # ------------------------------------------------------------
-# GET /a/
+# GET /animals/
 # List all animals with optional query-param filters.
-# Example: /a/?species=Dog&status=Available&min_age=12&max_age=48
+# Example: /animals/?species=Dog&status=Available&min_age=12&max_age=48
 # User stories: [Lisa-1], [Ayla-4]
 # ------------------------------------------------------------
 @animals.route("/", methods=["GET"])
@@ -64,10 +64,10 @@ def get_animals():
 
 
 # ------------------------------------------------------------
-# POST /a/
+# POST /animals/
 # Create a new animal profile.
 # Required fields: name, species
-# Example: POST /a/ with JSON body
+# Example: POST /animals/ with JSON body
 # User stories: [Ayla-2]
 # ------------------------------------------------------------
 @animals.route("/", methods=["POST"])
@@ -107,7 +107,7 @@ def add_animal():
 
 
 # ------------------------------------------------------------
-# GET /a/flagged
+# GET /animals/flagged
 # Return all animals flagged for extra promotion or foster placement.
 # Example: /a/flagged
 # User stories: [Ayla-5]
@@ -139,9 +139,9 @@ def get_flagged_animals():
 
 
 # ------------------------------------------------------------
-# GET /a/duplicates
+# GET /animals/duplicates
 # Return animal pairs sharing the same name and species.
-# Example: /a/duplicates
+# Example: /animals/duplicates
 # User stories: [John-4]
 # ------------------------------------------------------------
 @animals.route("/duplicates", methods=["GET"])
@@ -222,10 +222,10 @@ def get_animal(animal_id):
 
 
 # ------------------------------------------------------------
-# PUT /a/<animal_id>
+# PUT /animals/<animal_id>
 # Update animal fields (status, flagged, breed, age, etc).
 # Can update any field except animal_id.
-# Example: PUT /a/1 with JSON body containing fields to update
+# Example: PUT /animals/1 with JSON body containing fields to update
 # User stories: [John-3], [Ayla-5]
 # ------------------------------------------------------------
 @animals.route("/<int:animal_id>", methods=["PUT"])
@@ -262,9 +262,9 @@ def update_animal(animal_id):
 
 
 # ------------------------------------------------------------
-# DELETE /a/<animal_id>
+# DELETE /animals/<animal_id>
 # Remove an animal record (e.g. confirmed duplicate cleanup).
-# Example: DELETE /a/1
+# Example: DELETE /animals/1
 # User stories: [John-4]
 # ------------------------------------------------------------
 @animals.route("/<int:animal_id>", methods=["DELETE"])
@@ -288,10 +288,10 @@ def delete_animal(animal_id):
 
 
 # ------------------------------------------------------------
-# POST /a/<animal_id>/medical
+# POST /animals/<animal_id>/medical
 # Attach a new medical record to an animal.
 # Required fields: category, admin_date
-# Example: POST /a/1/medical with JSON body
+# Example: POST /animals/1/medical with JSON body
 # User stories: [Ayla-1]
 # ------------------------------------------------------------
 @animals.route("/<int:animal_id>/medical", methods=["POST"])
