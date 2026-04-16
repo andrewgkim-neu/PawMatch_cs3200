@@ -60,7 +60,7 @@ if st.button('Act as John, a System Admin',
              use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'usaid_worker'
-    st.session_state['first_name'] = 'Mohammad'
+    st.session_state['first_name'] = 'John'
     st.switch_page('pages/10_USAID_Worker_Home.py')
 
 if st.button('Act as Lucy, a Data Analyst',
@@ -68,7 +68,7 @@ if st.button('Act as Lucy, a Data Analyst',
              use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'SysAdmin'
+    st.session_state['first_name'] = 'Lucy'
     st.switch_page('pages/20_Admin_Home.py')
 
 if st.button('Act as Ayla, a Shleter Staff',
@@ -76,5 +76,5 @@ if st.button('Act as Ayla, a Shleter Staff',
              use_container_width=True):
     st.session_state['authenticated'] = True
     st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'SysAdmin'
+    st.session_state['first_name'] = 'Ayla'
     st.switch_page('pages/20_Admin_Home.py')
