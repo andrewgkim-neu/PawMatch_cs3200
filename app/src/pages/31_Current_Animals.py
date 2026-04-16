@@ -11,12 +11,12 @@ SideBarLinks()
 st.title("🐾 PawMatch: Current Animals")
 
 # -- API endpoint for animals ---
-API_URL = "http://web-api:4000/animals"
+API_URL = "http://web-api:4000/animals/"
 
 try: 
     reponse = requests.get(API_URL)
-    if response.status_code == 200:
-        animals = response.json()
+    if reponse.status_code == 200:
+        animals = reponse.json()
     
     else: 
         animals = []
@@ -27,20 +27,20 @@ except requests.exceptions.RequestException as e:
     st.error(f"Error connecting to the API: {str(e)}")
 
 # search bar and filter 
-with search_col:
-    search_query = st.text_input("Search", placeholder="Type to start searching...")
-with filter_col:
-    status_filter = st.selectbox("Status", ['Available', 'Adopted', 'Pending Adoption', 'Fostered', 'Medical Hold'])
+#with search_col:
+    #search_query = st.text_input("Search", placeholder="Type to start searching...")
+#with filter_col:
+    #status_filter = st.selectbox("Status", ['Available', 'Adopted', 'Pending Adoption', 'Fostered', 'Medical Hold'])
 
 # apply filters 
 filtered = animals 
-if search_query:
-    q = search_query.lower()
-    filtered = [a for a in filtered if q in a.get("Name", "").lower()
-                or q in a.get("species", "").lower()
-                or q in a.get("breed", "").lower()]
-if status_filter != "All":
-    filtered = [a for a in filtered if a.get("status", "").lower() == status_filter.lower()]
+#if search_query:
+    #q = search_query.lower()
+    #filtered = [a for a in filtered if q in a.get("Name", "").lower()
+                #or q in a.get("species", "").lower()
+                #or q in a.get("breed", "").lower()]
+#f status_filter != "All":
+    #filtered = [a for a in filtered if a.get("status", "").lower() == status_filter.lower()]
 
 st.write(f"**{len(filtered)}** animals found")
 

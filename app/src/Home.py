@@ -78,11 +78,3 @@ if st.button('Act as Ayla, a Shelter Staff Member',
     st.session_state['role'] = 'shelter_staff'
     st.session_state['first_name'] = 'Ayla'
     st.switch_page('pages/30_Shelter_Staff_Home.py')
-
-if st.button('Act as Ayla, a Shleter Staff',
-             type='primary',
-             use_container_width=True):
-    st.session_state['authenticated'] = True
-    st.session_state['role'] = 'administrator'
-    st.session_state['first_name'] = 'Ayla'
-    st.switch_page('pages/20_Admin_Home.py')
