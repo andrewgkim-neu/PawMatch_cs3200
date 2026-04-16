@@ -9,20 +9,36 @@ st.set_page_config(layout='wide')
 
 SideBarLinks()
 
-st.title('App Administration Page')
+st.title('Animal Dashboard')
+st.write('Live overview of all animals currently in the shelter')
 
-st.write('## Model 1 Maintenance')
+try:
+    response = requests.get('http://web-api:4000/analytics/dashboard')
+    data = response.json()
 
-if st.button("Train Model 01", type='primary', use_container_width=True):
-    # TODO: wire this to a POST /train route on the API that triggers retraining
-    st.info("Training route not yet implemented.")
 
-if st.button('Test Model 01', type='primary', use_container_width=True):
-    # TODO: wire this to a GET /test route on the API
-    st.info("Testing route not yet implemented.")
+    # Top summary metrics
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric('Total Animals', data['total_animals'])
+    with col2:
+        st.metric('Adopted This Month', data['adopted_this_month'])
+    with col3:
+        st.metric('Open Applications', data['open_applications'])
 
-if st.button('Model 1 - get predicted value for 10, 25',
-             type='primary',
-             use_container_width=True):
-    results = requests.get('http://web-api:4000/prediction/10/25').json()
-    st.dataframe(results)
+    st.divider()
+
+    # Status breakdown
+    st.subheader('Animals by Status')
+    status_df = pd.DataFrame(data['status_breakdown'])
+    st.dataframe(status_df, use_container_width=True)
+
+    st.divider()
+
+    # Longest stays
+    st.subheader('Top 10 Longest Stays')
+    stays_df = pd.DataFrame(data['longest_stays'])
+    st.dataframe(stays_df, use_container_width=True)
+
+except Exception as e:
+    st.error(f'Could not load dashboard data. Is the API running? Error: {e}')
