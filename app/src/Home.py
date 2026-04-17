@@ -50,6 +50,7 @@ if st.button("Act as Lisa, an Adopter",
     # we add the first name of the user (so it can be displayed on
     # subsequent pages).
     st.session_state['first_name'] = 'Lisa'
+    st.session_state['adopter_id'] = 1
     # finally, we ask streamlit to switch to another page, in this case, the
     # landing page for this particular user type
     logger.info("Logging in as an Adopter")

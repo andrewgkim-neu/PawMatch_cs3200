@@ -64,9 +64,9 @@ with photo_col:
     st.write("")
 
     if st.button("Schedule Meet & Greet", use_container_width=True):
-        st.session_state['meet_animal_id'] = animal_id
-        ##TODO -- make the scheduling page 
-        st.switch_page('pages/SCHEDULING_PAGE')
+        st.session_state['selected_animal_id'] = animal['animal_id']
+        st.session_state['selected_animal_name'] = animal['name'] 
+        st.switch_page('pages/03_Schedule_Appointment.py')
 
 with info_col:
     col1, col2 = st.columns(2)
@@ -74,21 +74,21 @@ with info_col:
     age_str = f"{age_months // 12} years " + (f"{age_months % 12} months" if age_months % 12 else "")
 
     with col1:
-        st.markdown("Species")
+        st.markdown("**Species**")
         st.write(animal.get('species', 'N/A'))
-        st.markdown("Breed")
+        st.markdown("**Breed**")
         st.write(animal.get('breed', 'N/A'))
-        st.markdown("Age")
+        st.markdown("**Age**")
         st.write(age_str)
 
     with col2:
         ## ADD ENERGY LEVEL DATA
-        st.markdown("Energy Level")
+        st.markdown("**Energy Level**")
         st.write(animal.get('energy_level', 'N/A'))
         ## ADD SIZE DATA
-        st.markdown("Size")
+        st.markdown("**Size**")
         st.write(animal.get('size', 'N/A'))
-        st.markdown("Status")
+        st.markdown("**Status**")
         status = animal.get('status', 'N/A')
         if status == 'Available':
             st.success(status)
@@ -101,14 +101,15 @@ with info_col:
 
     st.divider()
 
-    ## WRITE BIO FOR ANIMALS -- maybe
-    st.markdown("About Me")
+    ## TODO WRITE BIO FOR ANIMALS -- maybe
+    st.markdown("**About Me**")
     bio = animal.get('bio') or "No description available yet for this animal."
     st.caption(bio)
 
     st.divider()
 
-    st.markdown("Vaccination History")
+# Vaccination section
+    st.markdown("**Vaccination History**")
     if vaccines:
         badge_html = " ".join(
             f'<span style="background: #E1F5EE; color: #0F6E56; border: 1px solid #5DCAA5;'
