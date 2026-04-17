@@ -3,100 +3,122 @@ logger = logging.getLogger(__name__)
 import streamlit as st
 import pandas as pd
 import pydeck as pdk
+import requests
 from urllib.error import URLError
 from modules.nav import SideBarLinks
+
+API = 'http://web-api:4000'
 
 st.set_page_config(layout='wide')
 
 SideBarLinks()
 
-# set up the page
-st.markdown("# Mapping Demo")
-st.sidebar.header("Mapping Demo")
-st.write(
-    """This Mapping Demo is from the Streamlit Documentation. It shows how to use
-[`st.pydeck_chart`](https://docs.streamlit.io/library/api-reference/charts/st.pydeck_chart)
-to display geospatial data."""
-)
+if 'selected_animal_id' not in st.session_state:
+    st.warning("No animal selected. Please return to the search page.")
+    if st.button("Back to Browse"):
+        st.switch_page('pages/01_Specific_Animal_Info.py')
+    st.stop()
 
+animal_id = st.session_state['selected_animal_id']
 
-@st.cache_data
-def from_data_file(filename):
-    url = (
-        "http://raw.githubusercontent.com/streamlit/"
-        "example-data/master/hello/v1/%s" % filename
-    )
-    return pd.read_json(url)
+animal = None
+vaccines = []
+
+try:
+    r = requests.get(f"{API}/animals/{animal_id}")
+    if r.status_code == 200:
+        animal = r.json()
+    else:
+        st.error("Could not load this animal's profile")
+except requests.exceptions.RequestExceotion as e:
+    st.error(f"Error connecting to the API: {str(e)}")
 
 
 try:
-    ALL_LAYERS = {
-        "Bike Rentals": pdk.Layer(
-            "HexagonLayer",
-            data=from_data_file("bike_rental_stats.json"),
-            get_position=["lon", "lat"],
-            radius=200,
-            elevation_scale=4,
-            elevation_range=[0, 1000],
-            extruded=True,
-        ),
-        "Bart Stop Exits": pdk.Layer(
-            "ScatterplotLayer",
-            data=from_data_file("bart_stop_stats.json"),
-            get_position=["lon", "lat"],
-            get_color=[200, 30, 0, 160],
-            get_radius="[exits]",
-            radius_scale=0.05,
-        ),
-        "Bart Stop Names": pdk.Layer(
-            "TextLayer",
-            data=from_data_file("bart_stop_stats.json"),
-            get_position=["lon", "lat"],
-            get_text="name",
-            get_color=[0, 0, 0, 200],
-            get_size=15,
-            get_alignment_baseline="'bottom'",
-        ),
-        "Outbound Flow": pdk.Layer(
-            "ArcLayer",
-            data=from_data_file("bart_path_stats.json"),
-            get_source_position=["lon", "lat"],
-            get_target_position=["lon2", "lat2"],
-            get_source_color=[200, 30, 0, 160],
-            get_target_color=[200, 30, 0, 160],
-            auto_highlight=True,
-            width_scale=0.0001,
-            get_width="outbound",
-            width_min_pixels=3,
-            width_max_pixels=30,
-        ),
-    }
-    st.sidebar.markdown("### Map Layers")
-    selected_layers = [
-        layer
-        for layer_name, layer in ALL_LAYERS.items()
-        if st.sidebar.checkbox(layer_name, True)
-    ]
-    if selected_layers:
-        st.pydeck_chart(
-            pdk.Deck(
-                map_style="mapbox://styles/mapbox/light-v9",
-                initial_view_state={
-                    "latitude": 37.76,
-                    "longitude": -122.4,
-                    "zoom": 11,
-                    "pitch": 50,
-                },
-                layers=selected_layers,
-            )
+    r2 = requests.get(f"{API}/animals/{animal_id}/medical-records")
+    if r2.status_code == 200:
+        records = r2.json()
+        vaccines = [
+            rec.get('vaccine_name') or rec.get('record_type', 'Unknown shot')
+            for rec in records
+            if rec.get('record_type', '').lower() == 'vaccination'
+                or rec.get('vaccine_name')
+        ]
+
+except requests.exceptions.RequestException:
+    vaccines = []
+
+if not animal:
+    st.stop()
+
+if st.button("Back to Browse"):
+    st.switch_page('pages/01_Specific_Animal_Info.py')
+
+st.title(f"All About {animal.get('name', 'Unknown')}:")
+st.divider()
+
+photo_col, info_col = st.columns([1, 2], gap='large')
+
+with photo_col:
+    st.image("assets/animal.png", use_container_width=True)
+    st.write("")
+
+    if st.button("Schedule Meet & Greet", use_container_width=True):
+        st.session_state['meet_animal_id'] = animal_id
+        ##TODO -- make the scheduling page 
+        st.switch_page('pages/SCHEDULING_PAGE')
+
+with info_col:
+    col1, col2 = st.columns(2)
+    age_months = animal.get('age_months', 0)
+    age_str = f"{age_months // 12} years " + (f"{age_months % 12} months" if age_months % 12 else "")
+
+    with col1:
+        st.markdown("Species")
+        st.write(animal.get('species', 'N/A'))
+        st.markdown("Breed")
+        st.write(animal.get('breed', 'N/A'))
+        st.markdown("Age")
+        st.write(age_str)
+
+    with col2:
+        ## ADD ENERGY LEVEL DATA
+        st.markdown("Energy Level")
+        st.write(animal.get('energy_level', 'N/A'))
+        ## ADD SIZE DATA
+        st.markdown("Size")
+        st.write(animal.get('size', 'N/A'))
+        st.markdown("Status")
+        status = animal.get('status', 'N/A')
+        if status == 'Available':
+            st.success(status)
+        elif status == 'Adopted':
+            st.error(status)
+        elif status in ('Pending Adoption', 'Fostered', 'Medical Hold'):
+            st.warning(status)
+        else:
+            st.info(status)
+
+    st.divider()
+
+    ## WRITE BIO FOR ANIMALS -- maybe
+    st.markdown("About Me")
+    bio = animal.get('bio') or "No description available yet for this animal."
+    st.caption(bio)
+
+    st.divider()
+
+    st.markdown("Vaccination History")
+    if vaccines:
+        badge_html = " ".join(
+            f'<span style="background: #E1F5EE; color: #0F6E56; border: 1px solid #5DCAA5;'
+            f'border-radius: 20px; padding: 3px 12px; font-size: 13px; margin: 3px; display: inline-block;">'
+            f'✓ {v}</span>'
+            for v in vaccines
         )
+        st.markdown(badge_html, unsafe_allow_html=True)
     else:
-        st.error("Please choose at least one layer above.")
-except URLError as e:
-    st.error(
-        """
-        **This demo requires internet access.**
-        Connection error: %s
-    """
-        % e.reason
-    )
+        st.caption("No vaccination records on file")
+
+
+
