@@ -15,9 +15,9 @@ st.write('### What would you like to do today?')
 if st.button('Discover the Animals!',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/01_Specific_Animal_Info.py')
+    st.switch_page('pages/01_Browse_Animals.py')
 
-if st.button('View World Map Demo',
+if st.button('Schedule an Appointment',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/02_Map_Demo.py')
+    st.switch_page('pages/.py')

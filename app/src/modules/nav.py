@@ -24,13 +24,19 @@ def adopter_home_nav():
 
 def specific_animal_info_nav():
     st.sidebar.page_link(
-        "pages/01_Specific_Animal_Info.py", label="All About...", icon="🐶"
+        "pages/01_Browse_Animals.py", label="Discover the Animals", icon="🐶"
+    )
+
+def schedule_appointment_nav():
+    st.sidebar.page_link(
+        "pages/03_Schedule_Appointment.py", label="Schedule an Appointment", icon="🗓️"
     )
 
 def find_match_nav():
     st.sidebar.page_link(
-        "pages/02_Find_Match.py", label="Find Your Perfect Match", icon="📝"
+        "pages/04_Adoption_Application.py", label="Submit an Application", icon="📝"
     )
+
 
 # ---- Role: system_admin -----------------------------------------------------
 

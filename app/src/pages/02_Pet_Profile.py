@@ -16,7 +16,7 @@ SideBarLinks()
 if 'selected_animal_id' not in st.session_state:
     st.warning("No animal selected. Please return to the search page.")
     if st.button("Back to Browse"):
-        st.switch_page('pages/01_Specific_Animal_Info.py')
+        st.switch_page('pages/01_Browse_Animals.py')
     st.stop()
 
 animal_id = st.session_state['selected_animal_id']
@@ -52,7 +52,7 @@ if not animal:
     st.stop()
 
 if st.button("Back to Browse"):
-    st.switch_page('pages/01_Specific_Animal_Info.py')
+    st.switch_page('pages/01_Browse_Animals.py')
 
 st.title(f"All About {animal.get('name', 'Unknown')}:")
 st.divider()

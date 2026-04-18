@@ -69,5 +69,5 @@ if st.button("Confirm Appointment", type = "primary", use_container_width = True
 
 # Button to go back to the pet 
 if st.button("Back to Pet Profile"):
-    st.switch_page('pages/02_Find_Match.py')
+    st.switch_page('pages/02_Pet_Profile.py')
 
