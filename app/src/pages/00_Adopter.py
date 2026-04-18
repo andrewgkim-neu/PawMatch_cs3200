@@ -1,6 +1,5 @@
 import logging
 logger = logging.getLogger(__name__)
-
 import streamlit as st
 from modules.nav import SideBarLinks
 
@@ -20,4 +19,9 @@ if st.button('Discover the Animals!',
 if st.button('Schedule an Appointment',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/.py')
+    st.switch_page('pages/03_Schedule_Appointment.py')
+
+if st.button('Submit an Application',
+             type="primary",
+             use_container_width = True):
+    st.switch_page('pages/04_Adopter_Application.py')

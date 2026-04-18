@@ -22,7 +22,7 @@ def adopter_home_nav():
         "pages/00_Adopter.py", label="Adopter Home", icon="👤"
     )
 
-def specific_animal_info_nav():
+def browse_animals_nav():
     st.sidebar.page_link(
         "pages/01_Browse_Animals.py", label="Discover the Animals", icon="🐶"
     )
@@ -32,9 +32,9 @@ def schedule_appointment_nav():
         "pages/03_Schedule_Appointment.py", label="Schedule an Appointment", icon="🗓️"
     )
 
-def find_match_nav():
+def adopter_application_nav():
     st.sidebar.page_link(
-        "pages/04_Adoption_Application.py", label="Submit an Application", icon="📝"
+        "pages/04_Adopter_Application.py", label="Submit an Application", icon="📝"
     )
 
 
@@ -112,8 +112,9 @@ def SideBarLinks(show_home=False):
 
         if st.session_state["role"] == "adopter":
             adopter_home_nav()
-            specific_animal_info_nav()
-            find_match_nav()
+            browse_animals_nav()
+            schedule_appointment_nav()
+            adopter_application_nav()
 
         if st.session_state["role"] == "system_admin":
             system_admin_nav()

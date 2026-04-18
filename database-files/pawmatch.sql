@@ -314,7 +314,7 @@ insert into animal (animal_id, name, age_months, intake_date, status, species, b
 insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (39, 'Rocky', 127, '2009-07-11', 'Fostered', 'Dog', 'Siamese', false);
 insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (40, 'Molly', 132, '2012-04-13', 'Pending Adoption', 'Other', 'Golden Retriever', false);
 
-insert into adopter (adopter_id, first_name, last_name, email, phone, address) values (1, 'Lelah', 'Knath', 'lknath0@theguardian.com', '194-408-8884', '0301 Onsgard Trail');
+insert into adopter (adopter_id, first_name, last_name, email, phone, address) values (1, 'Lisa', 'Johnson', 'ljohnson3@theguardian.com', '194-408-8884', '0301 Onsgard Trail');
 insert into adopter (adopter_id, first_name, last_name, email, phone, address) values (2, 'Brenda', 'Robbie', 'brobbie1@studiopress.com', '139-436-6760', '901 Schlimgen Avenue');
 insert into adopter (adopter_id, first_name, last_name, email, phone, address) values (3, 'Dud', 'Ricciardo', 'dricciardo2@upenn.edu', '953-204-9328', '49584 Memorial Road');
 insert into adopter (adopter_id, first_name, last_name, email, phone, address) values (4, 'Pauly', 'Doogood', 'pdoogood3@shinystat.com', '953-754-8939', '2308 Fairview Court');
