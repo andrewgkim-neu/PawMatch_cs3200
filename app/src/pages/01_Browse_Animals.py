@@ -39,6 +39,7 @@ try:
         animals = []
         st.error("Failed to fetch animal data from the API.")
 
+
 except requests.exceptions.RequestException as e:
     animals = []
     st.error(f"Error connecting to the API: {str(e)}")

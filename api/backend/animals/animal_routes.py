@@ -195,7 +195,7 @@ def get_animal(animal_id):
         cursor.execute(
             """
             SELECT animal_id, name, species, breed,
-                   age_months, status, intake_date,
+                   age_months, size, energy_level, status, intake_date,
                    DATEDIFF(CURDATE(), intake_date) AS days_in_shelter,
                    flagged
             FROM   animal
