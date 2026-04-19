@@ -14,7 +14,7 @@ st.sidebar.header("Filter")
 species_filter = st.sidebar.multiselect("Species", ["Dog", "Cat", "Rabbit", "Other"])
 breed_filter = st.sidebar.multiselect("Breed", ["Golden Retriever", "Labrador Retriever", "German Shepherd", "Siamese Cat", "Persian Cat"])
 age_filter = st.sidebar.slider("Age", 0, 20, (0, 20))
-size_filter = st.sidebar.multiselect("Size", ["Small", "Midsize", "Large"])
+size_filter = st.sidebar.multiselect("Size", ["Small", "Medium", "Large"])
 
 # set the header of the page
 st.title('Discover the Animals')

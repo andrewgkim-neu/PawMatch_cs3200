@@ -15,15 +15,17 @@ USE PawMatch;
 -- animal
 -- ------------------------------------------------------------
 CREATE TABLE animal (
-    animal_id   INT AUTO_INCREMENT PRIMARY KEY,
-    name        VARCHAR(50),
-    age_months  INT,
-    intake_date DATE,
-    status      ENUM('Available', 'Adopted', 'Pending Adoption', 'Fostered', 'Medical Hold')
-                NOT NULL DEFAULT 'Available',
-    species     ENUM('Dog', 'Cat', 'Rabbit', 'Other') NOT NULL,
-    breed       VARCHAR(100),
-    flagged     BOOLEAN NOT NULL DEFAULT FALSE,
+    animal_id       INT AUTO_INCREMENT PRIMARY KEY,
+    name            VARCHAR(50),
+    age_months      INT,
+    size            ENUM('Small', 'Midsize', 'Large'),
+    energy_level    ENUM('Low', 'Medium', 'High'),
+    intake_date     DATE,
+    status          ENUM('Available', 'Adopted', 'Pending Adoption', 'Fostered', 'Medical Hold')
+                    NOT NULL DEFAULT 'Available',
+    species         ENUM('Dog', 'Cat', 'Rabbit', 'Other') NOT NULL,
+    breed           VARCHAR(100),
+    flagged         BOOLEAN NOT NULL DEFAULT FALSE,
     INDEX idx_status  (status),
     INDEX idx_species (species)
 );
@@ -158,10 +160,10 @@ CREATE TABLE foster_placement (
 CREATE TABLE compatibility_quiz (
     quiz_id          INT AUTO_INCREMENT PRIMARY KEY,
     adopter_id       INT NOT NULL,
-    activity_level   INT NOT NULL CHECK (activity_level BETWEEN 1 AND 10),
-    energy_pref      ENUM('Low', 'Medium', 'High'),
-    size_pref        ENUM('Small', 'Midsize', 'Large'),
-    living_situation ENUM('Apartment', 'House', 'Other'),
+    energy_pref      ENUM('Low', 'Medium', 'High', 'No Preference'),
+    size_pref        ENUM('Small', 'Midsize', 'Large', 'No Preference'),
+    species_pref     ENUM('Dog', 'Cat', 'Rabbit', 'No Preference'),
+    age_pref         ENUM('Baby', 'Adult', 'Senior', 'No Preference'),
     date_taken       DATE NOT NULL DEFAULT (CURRENT_DATE),
     CONSTRAINT fk_quiz_adopter
         FOREIGN KEY (adopter_id) REFERENCES adopter (adopter_id)
@@ -174,7 +176,7 @@ CREATE TABLE quiz_rec (
     rec_id              INT AUTO_INCREMENT PRIMARY KEY,
     quiz_id             INT NOT NULL,
     animal_id           INT NOT NULL,
-    compatibility_score INT NOT NULL CHECK (compatibility_score BETWEEN 1 AND 100),
+    compatibility_score INT NOT NULL CHECK (compatibility_score BETWEEN 0 AND 100),
     CONSTRAINT fk_rec_quiz
         FOREIGN KEY (quiz_id)   REFERENCES compatibility_quiz (quiz_id),
     CONSTRAINT fk_rec_animal
@@ -273,46 +275,46 @@ CREATE TABLE success_story (
 );
 USE PawMatch;
 
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (1, 'Lucy', 181, '2006-07-29', 'Adopted', 'Dog', 'Siamese', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (2, 'Lucy', 21, '2012-10-01', 'Available', 'Rabbit', 'Ragdoll', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (3, 'Molly', 182, '2005-12-07', 'Pending Adoption', 'Dog', 'German Shepherd', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (4, 'Sadie', 117, '2025-06-24', 'Pending Adoption', 'Rabbit', 'Persian', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (5, 'Buddy', 5, '2014-03-02', 'Medical Hold', 'Cat', 'Ragdoll', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (6, 'Lucy', 155, '2019-10-22', 'Pending Adoption', 'Other', 'German Shepherd', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (7, 'Max', 16, '2009-04-02', 'Pending Adoption', 'Cat', 'Golden Retriever', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (8, 'Molly', 38, '2010-08-25', 'Fostered', 'Dog', 'Bengal', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (9, 'Max', 82, '2017-11-23', 'Medical Hold', 'Dog', 'Bengal', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (10, 'Daisy', 160, '2018-04-28', 'Adopted', 'Rabbit', 'Ragdoll', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (11, 'Max', 186, '2024-04-28', 'Adopted', 'Other', 'Bengal', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (12, 'Rocky', 162, '2015-05-31', 'Fostered', 'Cat', 'Siamese', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (13, 'Lucy', 73, '2019-09-02', 'Adopted', 'Rabbit', 'Golden Retriever', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (14, 'Sadie', 4, '2012-02-12', 'Pending Adoption', 'Other', 'Poodle', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (15, 'Charlie', 19, '2014-06-06', 'Medical Hold', 'Dog', 'Maine Coon', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (16, 'Daisy', 64, '2014-04-08', 'Pending Adoption', 'Cat', 'German Shepherd', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (17, 'Bella', 199, '2006-11-15', 'Available', 'Other', 'Persian', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (18, 'Lucy', 55, '2013-05-24', 'Pending Adoption', 'Other', 'Siamese', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (19, 'Daisy', 30, '2011-07-08', 'Adopted', 'Cat', 'Siamese', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (20, 'Bailey', 147, '2024-05-14', 'Fostered', 'Cat', 'Labrador Retriever', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (21, 'Buddy', 69, '2016-05-31', 'Medical Hold', 'Rabbit', 'Golden Retriever', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (22, 'Rocky', 155, '2011-05-16', 'Available', 'Rabbit', 'Poodle', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (23, 'Buddy', 8, '2011-09-18', 'Pending Adoption', 'Other', 'Bengal', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (24, 'Sadie', 159, '2011-01-05', 'Fostered', 'Other', 'Ragdoll', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (25, 'Rocky', 118, '2014-10-15', 'Adopted', 'Dog', 'Poodle', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (26, 'Molly', 21, '2025-05-07', 'Available', 'Other', 'Golden Retriever', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (27, 'Buddy', 42, '2015-09-05', 'Fostered', 'Other', 'Poodle', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (28, 'Molly', 82, '2006-01-18', 'Medical Hold', 'Cat', 'Persian', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (29, 'Buddy', 61, '2013-01-15', 'Available', 'Cat', 'Labrador Retriever', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (30, 'Charlie', 167, '2020-09-28', 'Medical Hold', 'Dog', 'German Shepherd', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (31, 'Buddy', 153, '2024-05-09', 'Pending Adoption', 'Dog', 'Bengal', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (32, 'Bella', 121, '2018-11-09', 'Adopted', 'Cat', 'Labrador Retriever', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (33, 'Buddy', 29, '2009-02-23', 'Pending Adoption', 'Cat', 'Beagle', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (34, 'Lucy', 36, '2006-10-04', 'Available', 'Other', 'Beagle', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (35, 'Max', 166, '2005-05-13', 'Adopted', 'Cat', 'Golden Retriever', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (36, 'Lucy', 50, '2009-06-01', 'Available', 'Other', 'Persian', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (37, 'Molly', 170, '2021-10-22', 'Fostered', 'Dog', 'Bengal', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (38, 'Daisy', 158, '2010-11-24', 'Medical Hold', 'Dog', 'Ragdoll', true);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (39, 'Rocky', 127, '2009-07-11', 'Fostered', 'Dog', 'Siamese', false);
-insert into animal (animal_id, name, age_months, intake_date, status, species, breed, flagged) values (40, 'Molly', 132, '2012-04-13', 'Pending Adoption', 'Other', 'Golden Retriever', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (1, 'Cherry', 57, 'Small', 'Medium', '2006-02-07', 'Pending Adoption', 'Other', 'Ragdoll', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (2, 'Pebbles', 181, 'Midsize', 'Low', '2012-05-13', 'Medical Hold', 'Rabbit', 'Siamese', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (3, 'Pudding', 195, 'Small', 'High', '2020-05-01', 'Adopted', 'Dog', 'Persian', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (4, 'Honey', 91, 'Large', 'High', '2006-09-30', 'Medical Hold', 'Dog', 'Siamese', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (5, 'Fluffy', 37, 'Midsize', 'Medium', '2011-03-27', 'Pending Adoption', 'Rabbit', 'Golden Retriever', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (6, 'Waffles', 72, 'Large', 'High', '2010-05-09', 'Fostered', 'Other', 'Bengal', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (7, 'Waffles', 106, 'Large', 'High', '2023-03-13', 'Pending Adoption', 'Rabbit', 'Poodle', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (8, 'Pebbles', 119, 'Large', 'Medium', '2005-09-17', 'Medical Hold', 'Dog', 'Persian', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (9, 'Scooter', 176, 'Large', 'Low', '2025-04-12', 'Adopted', 'Rabbit', 'Labrador Retriever', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (10, 'Pudding', 148, 'Small', 'High', '2003-03-26', 'Fostered', 'Rabbit', 'Persian', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (11, 'Peanut', 200, 'Large', 'Low', '2000-03-27', 'Available', 'Rabbit', 'Golden Retriever', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (12, 'Buttercup', 139, 'Large', 'Low', '2023-07-13', 'Pending Adoption', 'Dog', 'Poodle', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (13, 'Peaches', 65, 'Small', 'Medium', '2013-07-31', 'Medical Hold', 'Rabbit', 'Maine Coon', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (14, 'Pebbles', 79, 'Small', 'Low', '2022-03-29', 'Adopted', 'Cat', 'Golden Retriever', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (15, 'Oreo', 121, 'Large', 'High', '2025-02-23', 'Available', 'Cat', 'Siamese', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (16, 'Sunny', 50, 'Small', 'High', '2005-03-18', 'Fostered', 'Cat', 'Poodle', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (17, 'Pumpkin', 111, 'Small', 'Low', '2009-02-15', 'Fostered', 'Other', 'Golden Retriever', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (18, 'Gizmo', 154, 'Large', 'Medium', '2003-08-16', 'Pending Adoption', 'Other', 'Poodle', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (19, 'Toffee', 188, 'Midsize', 'Medium', '2021-09-09', 'Fostered', 'Rabbit', 'Maine Coon', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (20, 'Honey', 14, 'Large', 'Medium', '2014-12-27', 'Available', 'Other', 'Bengal', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (21, 'Bubbles', 158, 'Small', 'High', '2015-12-21', 'Fostered', 'Cat', 'Bengal', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (22, 'Snickers', 189, 'Midsize', 'Low', '2015-07-30', 'Available', 'Cat', 'Bengal', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (23, 'Cherry', 131, 'Large', 'High', '2018-12-13', 'Adopted', 'Other', 'Beagle', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (24, 'Gizmo', 32, 'Large', 'Medium', '2001-06-01', 'Available', 'Rabbit', 'German Shepherd', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (25, 'Cherry', 52, 'Small', 'Medium', '2002-07-25', 'Pending Adoption', 'Dog', 'Labrador Retriever', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (26, 'Tulip', 126, 'Small', 'High', '2013-04-23', 'Medical Hold', 'Dog', 'Bengal', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (27, 'Peanut', 183, 'Small', 'Low', '2020-05-18', 'Adopted', 'Cat', 'Ragdoll', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (28, 'Pebbles', 194, 'Small', 'Medium', '2020-07-07', 'Available', 'Dog', 'Golden Retriever', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (29, 'Pebbles', 110, 'Small', 'Medium', '2018-10-18', 'Medical Hold', 'Cat', 'Siamese', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (30, 'Snickers', 47, 'Small', 'High', '2016-12-31', 'Adopted', 'Other', 'Persian', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (31, 'Pebbles', 15, 'Small', 'High', '2012-07-22', 'Adopted', 'Cat', 'Beagle', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (32, 'Pebbles', 130, 'Midsize', 'High', '2015-04-13', 'Available', 'Dog', 'Persian', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (33, 'Twinkie', 36, 'Midsize', 'Medium', '2014-05-13', 'Available', 'Rabbit', 'German Shepherd', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (34, 'Pebbles', 177, 'Midsize', 'Medium', '2004-09-15', 'Medical Hold', 'Other', 'German Shepherd', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (35, 'Pebbles', 179, 'Midsize', 'Low', '2016-12-31', 'Available', 'Dog', 'Persian', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (36, 'Ziggy', 112, 'Large', 'Low', '2002-03-04', 'Pending Adoption', 'Other', 'Siamese', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (37, 'Pippin', 86, 'Large', 'High', '2019-06-20', 'Available', 'Dog', 'Siamese', true);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (38, 'Whiskers', 145, 'Midsize', 'High', '2013-12-25', 'Medical Hold', 'Rabbit', 'Ragdoll', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (39, 'Snickers', 165, 'Large', 'Low', '2015-09-23', 'Medical Hold', 'Other', 'Persian', false);
+insert into animal (animal_id, name, age_months, size, energy_level, intake_date, status, species, breed, flagged) values (40, 'Luna', 14, 'Small', 'High', '2012-06-20', 'Adopted', 'Cat', 'Siamese', true);
 
 insert into adopter (adopter_id, first_name, last_name, email, phone, address) values (1, 'Lisa', 'Johnson', 'ljohnson3@theguardian.com', '194-408-8884', '0301 Onsgard Trail');
 insert into adopter (adopter_id, first_name, last_name, email, phone, address) values (2, 'Brenda', 'Robbie', 'brobbie1@studiopress.com', '139-436-6760', '901 Schlimgen Avenue');
@@ -665,46 +667,46 @@ insert into success_story (story_id, adopter_id, animal_id, rating, is_reviewed,
 insert into success_story (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (29, 30, 25, 10, true, 'Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy.', '2009-06-03 10:00:00');
 insert into success_story (story_id, adopter_id, animal_id, rating, is_reviewed, content, posted_at) values (30, 14, 9, 2, true, 'Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros.', '2012-05-25 10:00:00');
 
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (1, 5, 6, 'Medium', 'Midsize', 'Other', '2018-02-03');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (2, 38, 9, 'High', 'Midsize', 'Apartment', '2025-03-26');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (3, 21, 6, 'Low', 'Large', 'Apartment', '2009-06-14');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (4, 3, 10, 'High', 'Small', 'Apartment', '2012-07-02');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (5, 31, 8, 'High', 'Large', 'Apartment', '2006-09-12');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (6, 18, 9, 'High', 'Small', 'Other', '2003-02-04');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (7, 17, 6, 'High', 'Large', 'Other', '2009-05-31');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (8, 37, 6, 'Low', 'Small', 'Apartment', '2023-12-22');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (9, 24, 4, 'Medium', 'Midsize', 'Other', '2012-07-18');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (10, 8, 8, 'High', 'Midsize', 'House', '2012-06-09');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (11, 33, 3, 'Low', 'Large', 'House', '2023-03-07');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (12, 28, 2, 'Low', 'Large', 'Other', '2004-03-12');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (13, 24, 9, 'Low', 'Large', 'Apartment', '2020-02-10');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (14, 34, 6, 'High', 'Large', 'House', '2000-07-15');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (15, 33, 5, 'Medium', 'Midsize', 'Apartment', '2023-04-11');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (16, 6, 10, 'High', 'Large', 'Apartment', '2004-07-26');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (17, 29, 3, 'Low', 'Midsize', 'Apartment', '2013-12-08');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (18, 21, 4, 'Medium', 'Midsize', 'House', '2013-05-05');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (19, 1, 3, 'Medium', 'Midsize', 'Apartment', '2009-04-05');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (20, 30, 4, 'Medium', 'Midsize', 'Other', '2016-07-13');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (21, 35, 9, 'Low', 'Midsize', 'House', '2012-09-11');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (22, 18, 6, 'Medium', 'Large', 'Other', '2024-06-05');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (23, 32, 3, 'Low', 'Large', 'Other', '2009-08-17');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (24, 5, 8, 'High', 'Small', 'House', '2016-03-27');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (25, 3, 9, 'Low', 'Small', 'Other', '2011-11-27');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (26, 24, 7, 'High', 'Large', 'House', '2005-04-06');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (27, 7, 4, 'Low', 'Small', 'Apartment', '2005-02-21');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (28, 5, 5, 'Low', 'Large', 'Apartment', '2022-01-12');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (29, 23, 3, 'Low', 'Small', 'Apartment', '2017-10-16');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (30, 17, 7, 'High', 'Midsize', 'Apartment', '2013-04-05');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (31, 35, 9, 'High', 'Midsize', 'Apartment', '2018-08-24');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (32, 29, 9, 'Medium', 'Midsize', 'House', '2003-02-18');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (33, 26, 8, 'Low', 'Small', 'House', '2013-06-16');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (34, 39, 9, 'High', 'Large', 'Apartment', '2024-04-14');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (35, 5, 7, 'Low', 'Large', 'Other', '2023-10-28');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (36, 35, 9, 'High', 'Large', 'House', '2022-05-09');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (37, 26, 9, 'High', 'Midsize', 'Other', '2021-10-13');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (38, 5, 6, 'Low', 'Small', 'Other', '2019-01-19');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (39, 29, 7, 'Medium', 'Large', 'Other', '2021-09-08');
-insert into compatibility_quiz (quiz_id, adopter_id, activity_level, energy_pref, size_pref, living_situation, date_taken) values (40, 7, 5, 'High', 'Midsize', 'Apartment', '2008-03-16');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (1, 40, 'Low', 'Large', 'Rabbit', 'Baby', '2022-11-29');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (2, 3, 'Medium', 'Small', 'Rabbit', 'Baby', '2025-09-25');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (3, 11, 'No Preference', 'Large', 'Dog', 'No Preference', '2023-05-09');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (4, 31, 'Medium', 'No Preference', 'No Preference', 'Baby', '2021-02-13');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (5, 22, 'Medium', 'Large', 'Dog', 'Baby', '2020-02-01');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (6, 16, 'Medium', 'Midsize', 'Rabbit', 'Senior', '2023-05-15');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (7, 12, 'No Preference', 'No Preference', 'No Preference', 'Senior', '2023-04-27');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (8, 8, 'Medium', 'Small', 'Rabbit', 'Baby', '2020-12-18');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (9, 13, 'Low', 'Midsize', 'Rabbit', 'Senior', '2020-04-25');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (10, 38, 'Medium', 'No Preference', 'Rabbit', 'Adult', '2023-10-19');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (11, 23, 'No Preference', 'Small', 'No Preference', 'No Preference', '2023-11-07');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (12, 16, 'Medium', 'Small', 'Cat', 'Senior', '2022-06-10');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (13, 5, 'No Preference', 'Large', 'Dog', 'No Preference', '2022-08-14');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (14, 28, 'Medium', 'Midsize', 'Cat', 'Baby', '2025-09-13');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (15, 5, 'No Preference', 'Large', 'Dog', 'No Preference', '2024-01-22');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (16, 34, 'High', 'No Preference', 'Dog', 'No Preference', '2023-07-17');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (17, 1, 'Medium', 'Large', 'Cat', 'No Preference', '2025-01-10');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (18, 5, 'Low', 'Small', 'Cat', 'Baby', '2022-05-18');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (19, 11, 'High', 'Small', 'Rabbit', 'Adult', '2024-07-04');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (20, 31, 'High', 'Large', 'No Preference', 'No Preference', '2022-06-19');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (21, 22, 'No Preference', 'Small', 'Rabbit', 'Adult', '2022-08-20');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (22, 36, 'Low', 'Small', 'Dog', 'Baby', '2020-10-06');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (23, 31, 'Medium', 'Large', 'Rabbit', 'Baby', '2022-07-10');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (24, 21, 'Low', 'Small', 'Cat', 'No Preference', '2025-08-23');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (25, 28, 'No Preference', 'Large', 'No Preference', 'Baby', '2023-09-22');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (26, 35, 'No Preference', 'Small', 'No Preference', 'Adult', '2025-11-10');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (27, 28, 'High', 'No Preference', 'No Preference', 'Baby', '2021-03-08');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (28, 16, 'No Preference', 'Large', 'No Preference', 'Adult', '2023-02-21');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (29, 39, 'High', 'Large', 'Rabbit', 'Adult', '2021-09-07');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (30, 25, 'High', 'Large', 'Dog', 'No Preference', '2022-02-15');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (31, 39, 'Medium', 'Midsize', 'No Preference', 'No Preference', '2021-01-11');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (32, 28, 'High', 'Midsize', 'No Preference', 'Senior', '2021-06-09');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (33, 4, 'No Preference', 'Midsize', 'Cat', 'Senior', '2022-06-17');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (34, 22, 'No Preference', 'No Preference', 'Cat', 'Adult', '2020-09-07');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (35, 2, 'High', 'Large', 'Rabbit', 'Senior', '2024-11-01');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (36, 35, 'Medium', 'Midsize', 'No Preference', 'Senior', '2022-01-25');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (37, 40, 'No Preference', 'Small', 'Dog', 'Senior', '2020-10-01');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (38, 7, 'Low', 'No Preference', 'Dog', 'Adult', '2024-11-01');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (39, 18, 'Medium', 'Midsize', 'Dog', 'Adult', '2025-05-17');
+insert into compatibility_quiz (quiz_id, adopter_id, energy_pref, size_pref, species_pref, age_pref, date_taken) values (40, 36, 'Medium', 'Large', 'No Preference', 'Adult', '2023-10-30');
 
 insert into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) values (1, 21, 9, 69);
 insert into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) values (2, 4, 7, 16);
