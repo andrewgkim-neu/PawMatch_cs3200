@@ -22,10 +22,12 @@ def get_animals():
         status  = request.args.get("status")
         min_age = request.args.get("min_age")
         max_age = request.args.get("max_age")
+        size    = request.args.get("size")
+        energy_level = request.args.get("energy_level")
 
         query = """
             SELECT animal_id, name, species, breed,
-                   age_months, status, intake_date,
+                   age_months, size, energy_level, status, intake_date,
                    DATEDIFF(CURDATE(), intake_date) AS days_in_shelter,
                    flagged
             FROM   animal
@@ -48,6 +50,12 @@ def get_animals():
         if max_age:
             query += " AND age_months <= %s"
             params.append(int(max_age))
+        if size:
+            query += " AND size = %s"
+            params.append(size)
+        if energy_level:
+            query += " AND energy_level = %s"
+            params.append(energy_level)
 
         query += " ORDER BY intake_date ASC"
 

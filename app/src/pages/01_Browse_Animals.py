@@ -78,13 +78,13 @@ else:
                     with st.container(border=True):
                         st.image("assets/animal.png", use_container_width=True)
                         st.subheader(animal.get("name", "Unknown"))
-                        st.write(f"Species: {animal.get('species', 'N/A')}")
-                        st.write(f"Breed: {animal.get('breed', 'N/A')}")
+                        st.write(f"**Species:** {animal.get('species', 'N/A')}")
+                        st.write(f"**Breed:** {animal.get('breed', 'N/A')}")
                         age_months = animal.get('age_months', 0)
-                        st.write(f"Age: {age_months // 12} years {age_months % 12} months")
-                        st.write(f"Size: {animal.get('size', 'N/A')}")
-                        st.write(f"Status: {animal.get('status', 'N/A')}")
-                        if st.button("View Profile", key=f"btn_{animal.get('animal_id', i+j)}"):
+                        st.write(f"**Age:** {age_months // 12} years {age_months % 12} months")
+                        st.write(f"**Size:** {animal.get('size', 'N/A')}")
+                        st.write(f"**Status:** {animal.get('status', 'N/A')}")
+                        if st.button("View Profile", type="primary", key=f"btn_{animal.get('animal_id', i+j)}"):
                             st.session_state['selected_animal_id'] = animal.get('animal_id')
                             st.switch_page('pages/02_Pet_Profile.py')
 
