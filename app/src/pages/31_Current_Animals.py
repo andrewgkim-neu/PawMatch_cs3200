@@ -11,7 +11,7 @@ SideBarLinks()
 st.title("🐾 PawMatch: Current Animals")
 
 # -- API endpoint for animals ---
-API_URL = "http://web-api:4000/animals/"
+API_URL = "http://web-api:4000/animals"
 
 try: 
     reponse = requests.get(API_URL)
@@ -26,21 +26,22 @@ except requests.exceptions.RequestException as e:
     animals = []
     st.error(f"Error connecting to the API: {str(e)}")
 
-# search bar and filter 
-#with search_col:
-    #search_query = st.text_input("Search", placeholder="Type to start searching...")
-#with filter_col:
-    #status_filter = st.selectbox("Status", ['Available', 'Adopted', 'Pending Adoption', 'Fostered', 'Medical Hold'])
+# search bar and filter
+search_col, filter_col = st.columns([4, 1]) 
+with search_col:
+    search_query = st.text_input("🔍 Search", placeholder="Type to start searching...")
+with filter_col:
+    status_filter = st.selectbox("Status", ['All', 'Available', 'Adopted', 'Pending Adoption', 'Fostered', 'Medical Hold'])
 
 # apply filters 
 filtered = animals 
-#if search_query:
-    #q = search_query.lower()
-    #filtered = [a for a in filtered if q in a.get("Name", "").lower()
-                #or q in a.get("species", "").lower()
-                #or q in a.get("breed", "").lower()]
-#f status_filter != "All":
-    #filtered = [a for a in filtered if a.get("status", "").lower() == status_filter.lower()]
+if search_query:
+    q = search_query.lower()
+    filtered = [a for a in filtered if q in a.get("name", "").lower()
+                or q in a.get("species", "").lower()
+                or q in a.get("breed", "").lower()]
+if status_filter != "All":
+    filtered = [a for a in filtered if a.get("status", "").lower() == status_filter.lower()]
 
 st.write(f"**{len(filtered)}** animals found")
 
@@ -60,7 +61,13 @@ for i in range(0, len(filtered), cols_per_row):
                     st.write(f"**Species:** {animal.get('species', 'N/A')}")
                     st.write(f"**Breed:** {animal.get('breed', 'N/A')}")
                     st.write(f"**Status:** {animal.get('status', 'N/A')}")
-                    st.write(f"**Flagged:** {animal.get('flagged', 'N/A')}")
+                    flagged_result = animal.get('flagged', 'N/A')
+                    if flagged_result == 0:
+                        st.write(f"**Flagged:** 🚩 Yes")
+                    elif flagged_result == 1: 
+                        st.write(f"**Flagged:** ✅ No")
+                    else:
+                        st.writest.write(f"**Flagged:** N/A")
                     st.write(f"**Age (Months):** {animal.get('age_months', 'N/A')}")
                     st.write(f"**Intake Date:** {animal.get('intake_date', 'N/A')}")
 
