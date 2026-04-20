@@ -77,6 +77,11 @@ def report_nav():
         "pages/22_Report.py", label="Report", icon="📋"
     )
 
+def adoption_trends_nav():
+    st.sidebar.page_link(
+        "pages/23_Adoption_Trends.py", label="Adoption Trends", icon="📈"
+    )
+
 # ---- Role: shelter_staff ----------------------------------------------------
 
 def shelter_staff_home_nav():
@@ -137,6 +142,7 @@ def SideBarLinks(show_home=False):
             data_analyst_home_nav()
             dashboard_nav()
             report_nav()
+            adoption_trends_nav()
 
         if st.session_state["role"] == "shelter_staff":
             shelter_staff_home_nav()
