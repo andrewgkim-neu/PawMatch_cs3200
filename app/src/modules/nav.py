@@ -42,6 +42,10 @@ def compatibility_quiz_nav():
         "pages/05_Compatibility_Quiz.py", label= "Find Your Match", icon="🐾"
     )
 
+def success_stories_nav():
+    st.sidebar.page_link(
+        "pages/06_Success_Stories.py", label= "View Success Stories", icon="⭐️"
+    )
 
 # ---- Role: system_admin -----------------------------------------------------
 
@@ -119,6 +123,7 @@ def SideBarLinks(show_home=False):
             adopter_home_nav()
             browse_animals_nav()
             compatibility_quiz_nav()
+            success_stories_nav()
             schedule_appointment_nav()
             adopter_application_nav()
 

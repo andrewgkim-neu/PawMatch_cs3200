@@ -21,6 +21,11 @@ if st.button('Take a Compatibility Quiz',
              use_container_width= True):
     st.switch_page('pages/05_Compatibility_Quiz.py')
 
+if st.button('View Stories from Past Adopters', 
+             type = 'primary',
+             use_container_width = True):
+    st.switch_page('pages/06_Success_Stories.py')
+
 if st.button('Schedule an Appointment',
              type='primary',
              use_container_width=True):
