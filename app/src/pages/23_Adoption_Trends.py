@@ -1,1 +1,82 @@
-_
+import logging
+logger = logging.getLogger(__name__)
+
+import streamlit as st
+from modules.nav import SideBarLinks
+import requests
+import pandas as pd
+
+st.set_page_config(layout='wide')
+SideBarLinks()
+
+st.title('Adoption Trends & Application Funnel')
+st.write('Explore time-to-adoption trends and application status breakdown.')
+
+BASE_URL = 'http://web-api:4000/analytics'
+
+st.subheader('Time-to-Adoption Trends')
+
+col1, col2 = st.columns(2)
+with col1:
+    species_filter = st.selectbox('Filter by Species', ['All', 'Dog', 'Cat', 'Rabbit', 'Bird', 'Other'])
+with col2:
+    breed_filter = st.text_input('Filter by Breed (optional)')
+
+if st.button('Search Trends', type='primary', use_container_width=True):
+    try:
+        params = {}
+        if species_filter != 'All':
+            params['species'] = species_filter
+        if breed_filter:
+            params['breed'] = breed_filter
+
+        response = requests.get(f'{BASE_URL}/adoption-trends', params=params)
+        trends = response.json()
+
+        if trends:
+            df = pd.DataFrame(trends)
+            df.columns = ['Species', 'Breed', 'Year', 'Month', 'Total Adoptions', 'Avg Days to Adopt']
+            st.dataframe(df, use_container_width=True)
+
+            st.divider()
+
+            # Chart
+            st.write('#### Avg Days to Adopt Over Time')
+            chart_df = df[['Month', 'Avg Days to Adopt']].copy()
+            st.line_chart(chart_df.set_index('Month'))
+
+        else:
+            st.info('No adoption trend data found for those filters.')
+
+    except Exception as e:
+        st.error(f'Could not load adoption trends. Error: {e}')
+
+st.divider()
+
+st.subheader('Application Funnel Breakdown')
+st.write('See where prospective adopters are dropping off in the process.')
+
+try:
+    response = requests.get(f'{BASE_URL}/application-funnel')
+    funnel = response.json()
+
+    if funnel:
+        col1, col2 = st.columns(2)
+
+        with col1:
+            # Table
+            funnel_df = pd.DataFrame(funnel)
+            funnel_df.columns = ['Status', 'Total']
+            st.dataframe(funnel_df, use_container_width=True)
+
+        with col2:
+            # Bar chart
+            st.write('#### Applications by Status')
+            chart_df = funnel_df.set_index('Status')
+            st.bar_chart(chart_df)
+
+    else:
+        st.info('No application data found.')
+
+except Exception as e:
+    st.error(f'Could not load application funnel. Error: {e}') 
