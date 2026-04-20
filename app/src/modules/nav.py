@@ -37,6 +37,11 @@ def adopter_application_nav():
         "pages/04_Adopter_Application.py", label="Submit an Application", icon="📝"
     )
 
+def compatibility_quiz_nav():
+    st.sidebar.page_link(
+        "pages/05_Compatibility_Quiz.py", label= "Find Your Match", icon="🐾"
+    )
+
 
 # ---- Role: system_admin -----------------------------------------------------
 
@@ -113,6 +118,7 @@ def SideBarLinks(show_home=False):
         if st.session_state["role"] == "adopter":
             adopter_home_nav()
             browse_animals_nav()
+            compatibility_quiz_nav()
             schedule_appointment_nav()
             adopter_application_nav()
 

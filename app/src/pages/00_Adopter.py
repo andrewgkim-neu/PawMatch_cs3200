@@ -16,6 +16,11 @@ if st.button('Discover the Animals!',
              use_container_width=True):
     st.switch_page('pages/01_Browse_Animals.py')
 
+if st.button('Take a Compatibility Quiz',
+             type = 'primary', 
+             use_container_width= True):
+    st.switch_page('pages/05_Compatibility_Quiz.py')
+
 if st.button('Schedule an Appointment',
              type='primary',
              use_container_width=True):
