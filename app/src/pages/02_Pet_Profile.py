@@ -63,10 +63,15 @@ with photo_col:
     st.image("assets/animal.png", use_container_width=True)
     st.write("")
 
-    if st.button("Schedule Meet & Greet", use_container_width=True):
+    if st.button("Schedule an Appointment with me!", use_container_width=True):
         st.session_state['selected_animal_id'] = animal['animal_id']
         st.session_state['selected_animal_name'] = animal['name'] 
         st.switch_page('pages/03_Schedule_Appointment.py')
+    
+    if st.button("⭐️Adopt me!⭐️", use_container_width=True):
+        st.session_state['selected_animal_id'] = animal['animal_id']
+        st.session_state['selected_animal_name'] = animal['name']
+        st.switch_page('pages/04_Adopter_Application.py')
 
 with info_col:
     col1, col2 = st.columns(2)
