@@ -149,6 +149,7 @@ def SideBarLinks(show_home=False):
             system_admin_nav()
             add_new_animal_nav()
             add_new_employee_nav()
+            audit_log_nav()
 
 
         if st.session_state["role"] == "data_analyst":
