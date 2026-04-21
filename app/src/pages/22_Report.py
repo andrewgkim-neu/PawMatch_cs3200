@@ -70,7 +70,7 @@ st.subheader('Create a New Report Template')
 with st.form('create_template_form'):
     template_name = st.text_input('Template Name')
     export_format = st.selectbox('Export Format', ['PDF', 'CSV', 'Excel'])
-    metric_included = st.selectbox('Metric Included', [
+    metric_included = st.multiselect('Metric Included', [
     'Total Adopted',
     'Average Days to Adopt',
     'Average Length of Stay',
