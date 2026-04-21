@@ -113,18 +113,4 @@ with info_col:
 
     st.divider()
 
-# Vaccination section
-    st.markdown("**Vaccination History**")
-    if vaccines:
-        badge_html = " ".join(
-            f'<span style="background: #E1F5EE; color: #0F6E56; border: 1px solid #5DCAA5;'
-            f'border-radius: 20px; padding: 3px 12px; font-size: 13px; margin: 3px; display: inline-block;">'
-            f'✓ {v}</span>'
-            for v in vaccines
-        )
-        st.markdown(badge_html, unsafe_allow_html=True)
-    else:
-        st.caption("No vaccination records on file")
-
-
 
