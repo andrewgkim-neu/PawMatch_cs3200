@@ -22,10 +22,13 @@ API = "http://web-api:4000"
 col1, col2, col3, col4 = st.columns(4)
 
 try:
-    animals = requests.get(f"{API}/animals/").json()
+    resp = requests.get(f"{API}/animals/")
+    resp.raise_for_status()
+    animals = resp.json()
     total_animals = len(animals)
     flagged = len([a for a in animals if a.get("flagged")])
-except:
+except Exception as e:
+    st.error(f"Animals API error: {e}")  # This will now show you the real problem
     total_animals = "—"
     flagged = "—"
 
