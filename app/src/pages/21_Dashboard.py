@@ -42,9 +42,3 @@ try:
 
 except Exception as e:
     st.error(f'Could not load dashboard data. Is the API running? Error: {e}')
-
-try:
-    response = requests.get('http://web-api:4000/analytics/dashboard')
-    st.write(response.json())  # shows raw response
-except Exception as e:
-    st.error(f'Error: {e}')
