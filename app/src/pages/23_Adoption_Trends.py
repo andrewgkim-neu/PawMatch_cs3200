@@ -51,8 +51,10 @@ if st.button('Search Trends', type='primary', use_container_width=True):
             st.divider()
 
             st.write('#### Avg Days to Adopt Over Time')
-            chart_df = df[['Month', 'Avg Days to Adopt']].copy()
-            st.line_chart(chart_df.set_index('Month'))
+            df['Period'] = df['Year'].astype(str) + '-' + df['Month'].astype(str).str.zfill(2)
+            df['Avg Days to Adopt'] = pd.to_numeric(df['Avg Days to Adopt'], errors='coerce')
+            chart_df = df.groupby('Period')['Avg Days to Adopt'].mean().sort_index()
+            st.line_chart(chart_df)
 
         else:
             st.info('No adoption trend data found for those filters.')
