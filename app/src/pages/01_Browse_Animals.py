@@ -20,7 +20,7 @@ size_filter = st.sidebar.multiselect("Size", ["Small", "Midsize", "Large"])
 st.title('Discover the Animals')
 st.write(f"### Hi, {st.session_state['first_name']}")
 
-search = st.text_input("Search", placeholder = "Search by breed")
+search = st.text_input("Search", placeholder = "Search by name")
 
 
 params = {}

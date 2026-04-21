@@ -80,3 +80,6 @@ try:
 
 except Exception as e:
     st.error(f'Could not load application funnel. Error: {e}') 
+
+response = requests.get(f'{BASE_URL}/application-funnel')
+st.write(response.json())  # show raw response
