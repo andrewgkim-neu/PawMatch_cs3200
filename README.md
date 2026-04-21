@@ -133,3 +133,43 @@ _Note_: This project only contains the infrastructure for a hypothetical ML mode
    - We've put a sample (read _fake_) ML model in the `model01.py` file. The `predict` function will be called by the Flask REST API to perform '_real-time_' prediction based on model parameter values that are stored in the database. **Important**: you would never want to hard code the model parameter weights directly in the prediction function.
 1. The prediction route for the REST API is in `api/backend/simple/simple_routes.py`. Basically, it accepts two URL parameters and passes them to the `prediction` function in the `ml_models` module. The `prediction` route/function packages up the value(s) it receives from the model's `predict` function and sends it back to Streamlit as JSON.
 1. Back in Streamlit, check out `app/src/pages/11_Prediction.py`. Here, two numeric input fields are created. When the button is pressed, it makes a request to the REST API at `/prediction/{var_01}/{var_02}` and passes the values from the two inputs as URL path parameters. It gets back the results from the route and displays them.
+
+## Additions to README
+Project Overview 
+....
+****************************************************************************************************************
+./app additions: 
+- We have 4 new users you can sign in as: 
+1. Lisa, the Adopter
+2. John, the System Admin
+3. Lucy, the Data Analyst 
+4. Ayla, a Shelter Staff Member 
+
+Each user has multiple pages attached to theirs 
+- Lisa, the Adopter: 
+   - **Home** page: Directs to all of the other Adopter pages
+   - **Discover the Animals** page: Allows Lisa to scroll through all available animals at the shelter for adoption 
+   - **Find Your Match** page: Allows Lisa to enter animal preferences to find the perfect animal match
+   - **Success Stories** page: Lisa can scroll through other adopters success stories/reviews when adopting an animal
+   - **Schedule an Appointment** page: Lisa can schedule a meet appointment with a specific animal and enter notes 
+   - **Submit an Application** page: Lisa can submit a new adoption application for an animal 
+
+- John, the System Admin: 
+   - 
+
+- Lucy, the Data Analyst: 
+   - **Live Dashboard** page: Lucy can view a live dashboard for the shelter with different metrics 
+   - **Manage Adoptions** page: Lucy can manage reports for the shelter
+   - **Adoption Trends** page: Lucy can view adoption trends for the shelter 
+
+- Ayla, the Staff Shelter Member: 
+   - **Current Animals In Shelter** page: Ayla can view all current animals in the shelter 
+   - **Adoption Applications** page: Ayla can view all adoption applications and their information
+   - **Animal Medical Records** page: Ayla can view all medical records for animals in the shelter  
+
+****************************************************************************************************************
+./api additions: 
+- 
+****************************************************************************************************************
+./database-files additions: 
+- Added in our SQL data base with mock data for all tables 
