@@ -30,7 +30,7 @@ if st.button('View Animal Medical Records',
 if st.button('View Foster Placements',
              type='primary',
              use_container_width=True):
-    st.switch_page('pages/35_Foster_Placement.py')
+    st.switch_page('pages/35_Foster_Placements.py')
 
 
 

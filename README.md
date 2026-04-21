@@ -136,6 +136,7 @@ _Note_: This project only contains the infrastructure for a hypothetical ML mode
 
 ## Additions to README
 Project Overview 
+Team Members: Ifeoluwa Adeyosoye, Sophia Romualdez, Elizabeth Colby, Andrew Kim
 ....
 
 ****************************************************************************************************************

@@ -8,7 +8,7 @@ foster_placements = Blueprint("foster_placements", __name__)
 @foster_placements.route('/', methods=['GET'])
 def get_foster_placements():
     page = int(request.args.get('page', 1))
-    per_page = int(request.args.get('per_page', 5))
+    per_page = int(request.args.get('per_page', 30))
     offset = (page - 1) * per_page
 
     # Optional query filters
@@ -24,7 +24,6 @@ def get_foster_placements():
                an.name AS animal_name,
                fp.start_date,
                fp.end_date,
-               fp.duration,
                fp.return_reason,
                fp.health_notes,
                fp.behavior_notes
@@ -49,7 +48,7 @@ def get_foster_placements():
     params.extend([per_page, offset])
 
     db = get_db()
-    cursor = db.cursor()
+    cursor = db.cursor(dictionary=True)
     cursor.execute(base_query, params)
     rows = cursor.fetchall()
     return jsonify(rows), 200
@@ -69,7 +68,6 @@ def get_foster_placement(placement_id):
                an.name  AS animal_name,
                fp.start_date,
                fp.end_date,
-               fp.duration,
                fp.return_reason,
                fp.health_notes,
                fp.behavior_notes

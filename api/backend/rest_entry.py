@@ -9,6 +9,7 @@ from backend.admin.admin_routes import admin
 from backend.analytics.analytics_routes import analytics
 from backend.stories.story_routes import success_stories
 from backend.db_connection import init_app as init_db
+from backend.foster_placement.foster_routes import foster_placements
 
 
 def create_app():
@@ -43,5 +44,7 @@ def create_app():
     app.register_blueprint(admin, url_prefix="/admin")
     app.register_blueprint(analytics, url_prefix="/analytics")
     app.register_blueprint(success_stories, url_prefix="/success_story")
+    app.register_blueprint(foster_placements, url_prefix='/foster_placements')
+
 
     return app
