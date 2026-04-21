@@ -1,107 +1,120 @@
-import datetime
 import streamlit as st
 import requests
+from datetime import date
 from modules.nav import SideBarLinks
 
-st.set_page_config(layout='wide')
+st.set_page_config(
+    page_title="Add New Animal | PawMatch",
+    page_icon="📁",
+    layout="wide"
+)
 
-# Initialize sidebar
-SideBarLinks()
+SideBarLinks(show_home=True)
 
-st.title("Add New NGO")
+API = "http://web-api:4000"
+st.title("📁 Add New Animal")
+st.markdown("Register a new animal entering the shelter. All fields marked * are required.")
+st.divider()
 
-# Initialize session state for modal
-if "show_success_modal" not in st.session_state:
-    st.session_state.show_success_modal = False
-if "success_ngo_name" not in st.session_state:
-    st.session_state.success_ngo_name = ""
-if "reset_form" not in st.session_state:
-    st.session_state.reset_form = False
-if "form_key_counter" not in st.session_state:
-    st.session_state.form_key_counter = 0
+# Check for duplicates section
+st.subheader("🔍 Check for Duplicates First")
+st.caption("Search for potential duplicate records before adding a new animal.")
 
-# Define the success dialog function
-@st.dialog("Success")
-def show_success_dialog(ngo_name):
-    st.markdown(f"### {ngo_name} has been successfully added to the system!")
-    
-    # Create two buttons side by side
+with st.expander("View Potential Duplicate Records"):
+    try:
+        dupes = requests.get(f"{API}/animals/duplicates").json()
+        if dupes:
+            import pandas as pd
+            st.warning(f"{len(dupes)} potential duplicate pair(s) found.")
+            st.dataframe(pd.DataFrame(dupes), use_container_width=True, hide_index=True)
+        else:
+            st.success("No duplicate records found.")
+    except:
+        st.error("Could not load duplicate check.")
+
+st.divider()
+
+# Add animal form
+st.subheader("Animal Profile")
+
+with st.form("add_animal_form", clear_on_submit=True):
     col1, col2 = st.columns(2)
-    
+
     with col1:
-        if st.button("Return to NGO Directory", use_container_width=True):
-            st.session_state.show_success_modal = False
-            st.session_state.success_ngo_name = ""
-            st.switch_page("pages/14_NGO_Directory.py")
-    
+        name = st.text_input("Animal Name *")
+        species = st.selectbox("Species *", ["Dog", "Cat", "Rabbit", "Other"])
+        breed = st.text_input("Breed")
+        age_months = st.number_input("Age (months)", min_value=0, step=1)
+
     with col2:
-        if st.button("Add Another NGO", use_container_width=True):
-            st.session_state.show_success_modal = False
-            st.session_state.success_ngo_name = ""
-            st.session_state.reset_form = True
-            st.rerun()
+        intake_date = st.date_input("Intake Date *", value=date.today())
+        status = st.selectbox(
+            "Status *",
+            ["Available", "Fostered", "Pending Adoption", "Medical Hold"]
+        )
+        flagged = st.checkbox("Flag for extra promotion / foster placement")
 
-# Handle form reset
-if st.session_state.reset_form:
-    st.session_state.form_key_counter += 1
-    st.session_state.reset_form = False
-
-# API endpoint
-API_URL = "http://web-api:4000/ngo/ngos"
-
-# Create a form for NGO details with dynamic key to force reset
-with st.form(f"add_ngo_form_{st.session_state.form_key_counter}"):
-    st.subheader("NGO Information")
-
-    # Required fields
-    name = st.text_input("Organization Name *")
-    country = st.text_input("Country *")
-    current_year = datetime.date.today().year
-    founding_year = st.number_input(
-        "Founding Year *", min_value=1800, max_value=current_year, value=current_year
-    )
-    focus_area = st.text_input("Focus Area *")
-    website = st.text_input("Website URL *")
-
-    # Form submission button
-    submitted = st.form_submit_button("Add NGO")
+    st.divider()
+    submitted = st.form_submit_button("➕ Add Animal", type="primary", use_container_width=True)
 
     if submitted:
-        # Validate required fields
-        if not all([name, country, founding_year, focus_area, website]):
-            st.error("Please fill in all required fields marked with *")
+        if not name:
+            st.error("Animal name is required.")
         else:
-            # Prepare the data for API
-            ngo_data = {
-                "Name": name,
-                "Country": country,
-                "Founding_Year": int(founding_year),
-                "Focus_Area": focus_area,
-                "Website": website,
+            payload = {
+                "name": name,
+                "species": species,
+                "breed": breed if breed else None,
+                "age_months": int(age_months),
+                "intake_date": str(intake_date),
+                "status": status,
+                "flagged": flagged
             }
-
             try:
-                # Send POST request to API
-                response = requests.post(API_URL, json=ngo_data)
-
-                if response.status_code == 201:
-                    # Store NGO name and show modal
-                    st.session_state.show_success_modal = True
-                    st.session_state.success_ngo_name = name
-                    st.rerun()
+                res = requests.post(f"{API}/animals/", json=payload)
+                if res.status_code == 201:
+                    data = res.json()
+                    st.success(f"✅ Animal added successfully! Animal ID: {data['animal_id']}")
                 else:
-                    st.error(
-                        f"Failed to add NGO: {response.json().get('error', 'Unknown error')}"
-                    )
+                    st.error(f"Error: {res.json().get('error', 'Unknown error')}")
+            except Exception as e:
+                st.error(f"Request failed: {e}")
 
-            except requests.exceptions.RequestException as e:
-                st.error(f"Error connecting to the API: {str(e)}")
-                st.info("Please ensure the API server is running")
+st.divider()
 
-# Show success modal if NGO was added successfully
-if st.session_state.show_success_modal:
-    show_success_dialog(st.session_state.success_ngo_name)
+# Update existing animal status
+st.subheader("✏️ Update Existing Animal")
+st.caption("Update status, flag, or other details for an existing animal. [John-3]")
 
-# Add a button to return to the NGO Directory
-if st.button("Return to NGO Directory"):
-    st.switch_page("pages/14_NGO_Directory.py")
+with st.form("update_animal_form"):
+    animal_id = st.number_input("Animal ID to Update", min_value=1, step=1)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        new_status = st.selectbox(
+            "New Status (leave unchanged if not updating)",
+            ["", "Available", "Adopted", "Pending Adoption", "Fostered", "Medical Hold"]
+        )
+    with col2:
+        new_flagged = st.selectbox("Flagged", ["No change", "True", "False"])
+
+    update_submitted = st.form_submit_button("Update Animal", type="primary")
+
+    if update_submitted:
+        payload = {}
+        if new_status:
+            payload["status"] = new_status
+        if new_flagged != "No change":
+            payload["flagged"] = new_flagged == "True"
+
+        if not payload:
+            st.warning("No changes specified.")
+        else:
+            try:
+                res = requests.put(f"{API}/animals/{int(animal_id)}", json=payload)
+                if res.status_code == 200:
+                    st.success(f"Animal {int(animal_id)} updated successfully.")
+                else:
+                    st.error(f"Error: {res.json().get('error', 'Unknown error')}")
+            except Exception as e:
+                st.error(f"Request failed: {e}")

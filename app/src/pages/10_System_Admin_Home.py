@@ -1,126 +1,92 @@
-import logging
-logger = logging.getLogger(__name__)
-
 import streamlit as st
 from modules.nav import SideBarLinks
 
-st.set_page_config(layout='wide')
+st.set_page_config(
+    page_title="System Admin Home | PawMatch",
+    page_icon="🔧",
+    layout="wide"
+)
 
-# Show appropriate sidebar links for the role of the currently logged in user
-SideBarLinks()
+SideBarLinks(show_home=True)
 
-st.title(f"Welcome USAID Worker, {st.session_state['first_name']}.")
-st.write('### What would you like to do today?')
+# Header
+st.title(f"Welcome, {st.session_state.get('first_name', 'Admin')} 👋")
+st.markdown("##### System Administration Dashboard — PawMatch")
+st.divider()
 
-if st.button('View NGO Directory',
-             type='primary',
-             use_container_width=True):
-    st.switch_page('pages/14_NGO_Directory.py')
-
-if st.button('Add New NGO',
-             type='primary',
-             use_container_width=True):
-    st.switch_page('pages/15_Add_NGO.py')
-
-if st.button('Predict Value Based on Regression Model',
-             type='primary',
-             use_container_width=True):
-    st.switch_page('pages/11_Prediction.py')
-
-if st.button('View the Simple API Demo',
-             type='primary',
-             use_container_width=True):
-    st.switch_page('pages/12_API_Test.py')
-
-if st.button('View Classification Demo',
-             type='primary',
-             use_container_width=True):
-    st.switch_page('pages/13_Classification.py')
-
-
-# sample code for directory as well 
-import streamlit as st
+# Quick stat cards using the API
 import requests
-from modules.nav import SideBarLinks
 
-st.set_page_config(layout='wide')
+API = "http://web-api:4000"
 
-# Initialize sidebar
-SideBarLinks()
+col1, col2, col3, col4 = st.columns(4)
 
-st.title("NGO Directory")
-
-# API endpoint
-API_URL = "http://web-api:4000/ngo/ngos"
-
-# Create filter columns
-col1, col2, col3 = st.columns(3)
-
-# Get unique values for filters from the API
 try:
-    response = requests.get(API_URL)
-    if response.status_code == 200:
-        ngos = response.json()
+    animals = requests.get(f"{API}/animals/").json()
+    total_animals = len(animals)
+    flagged = len([a for a in animals if a.get("flagged")])
+except:
+    total_animals = "—"
+    flagged = "—"
 
-        # Extract unique values for filters
-        countries = sorted(list(set(ngo["Country"] for ngo in ngos)))
-        focus_areas = sorted(list(set(ngo["Focus_Area"] for ngo in ngos)))
-        founding_years = sorted(list(set(ngo["Founding_Year"] for ngo in ngos)))
+try:
+    employees = requests.get(f"{API}/admin/employees").json()
+    total_employees = len(employees)
+except:
+    total_employees = "—"
 
-        # Create filters
-        with col1:
-            selected_country = st.selectbox("Filter by Country", ["All"] + countries)
+try:
+    logs = requests.get(f"{API}/admin/audit-logs").json()
+    total_logs = len(logs)
+except:
+    total_logs = "—"
 
-        with col2:
-            selected_focus = st.selectbox("Filter by Focus Area", ["All"] + focus_areas)
+with col1:
+    st.metric("Total Animals", total_animals)
+with col2:
+    st.metric("Flagged Animals", flagged)
+with col3:
+    st.metric("Total Employees", total_employees)
+with col4:
+    st.metric("Audit Log Entries", total_logs)
 
-        with col3:
-            selected_year = st.selectbox(
-                "Filter by Founding Year",
-                ["All"] + [str(year) for year in founding_years],
-            )
+st.divider()
 
-        # Build query parameters
-        params = {}
-        if selected_country != "All":
-            params["country"] = selected_country
-        if selected_focus != "All":
-            params["focus_area"] = selected_focus
-        if selected_year != "All":
-            params["founding_year"] = selected_year
+# Quick action links
+st.subheader("Quick Actions")
 
-        # Get filtered data
-        filtered_response = requests.get(API_URL, params=params)
-        if filtered_response.status_code == 200:
-            filtered_ngos = filtered_response.json()
+c1, c2, c3 = st.columns(3)
 
-            # Display results count
-            st.write(f"Found {len(filtered_ngos)} NGOs")
+with c1:
+    st.markdown("#### 📁 Add New Animal")
+    st.write("Register a new animal entering the shelter with full profile information.")
+    if st.button("Go to Add Animal", use_container_width=True):
+        st.switch_page("pages/14_Add_New_Animal.py")
 
-            # Create expandable rows for each NGO
-            for ngo in filtered_ngos:
-                with st.expander(f"{ngo['Name']} ({ngo['Country']})"):
-                    info_col, contact_col = st.columns(2)
+with c2:
+    st.markdown("#### ➕ Add New Employee")
+    st.write("Create a new staff member account and assign their role and permissions.")
+    if st.button("Go to Add Employee", use_container_width=True):
+        st.switch_page("pages/15_Add_New_Employee.py")
 
-                    with info_col:
-                        st.write("**Basic Information**")
-                        st.write(f"**Country:** {ngo['Country']}")
-                        st.write(f"**Founded:** {ngo['Founding_Year']}")
-                        st.write(f"**Focus Area:** {ngo['Focus_Area']}")
+with c3:
+    st.markdown("#### 📋 Audit Log")
+    st.write("Review all changes made to animal records — who changed what and when.")
+    if st.button("Go to Audit Log", use_container_width=True):
+        st.switch_page("pages/11_Audit_Log.py")
 
-                    with contact_col:
-                        st.write("**Contact Information**")
-                        st.write(f"**Website:** [{ngo['Website']}]({ngo['Website']})")
+st.divider()
 
-                    # Add a button to view full profile
-                    if st.button("View Full Profile", key=f"view_{ngo['NGO_ID']}"):
-                        st.session_state["selected_ngo_id"] = ngo["NGO_ID"]
-                        st.switch_page("pages/16_NGO_Profile.py")
-
+# Recent audit log preview
+st.subheader("Recent Activity")
+try:
+    logs = requests.get(f"{API}/admin/audit-logs").json()
+    if logs:
+        import pandas as pd
+        df = pd.DataFrame(logs[:5])
+        display_cols = [c for c in ["changed_at", "animal_name", "changed_by", "action", "field_changed"] if c in df.columns]
+        st.dataframe(df[display_cols], use_container_width=True, hide_index=True)
     else:
-        st.error("Failed to fetch NGO data from the API")
-
-except requests.exceptions.RequestException as e:
-    st.error(f"Error connecting to the API: {str(e)}")
-    st.info("Please ensure the API server is running on http://web-api:4000")
-
+        st.info("No audit log entries yet.")
+except:
+    st.warning("Could not load recent activity.")
