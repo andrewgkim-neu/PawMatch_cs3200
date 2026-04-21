@@ -76,7 +76,7 @@ with c3:
     st.markdown("#### 📋 Audit Log")
     st.write("Review all changes made to animal records — who changed what and when.")
     if st.button("Go to Audit Log", use_container_width=True):
-        st.switch_page("pages/11_Audit_Log.py")
+        st.switch_page("pages/16_Audit_Log.py")
 
 st.divider()
 

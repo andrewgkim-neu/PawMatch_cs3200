@@ -87,5 +87,5 @@ else:
                         st.write(f"**Status:** {animal.get('status', 'N/A')}")
                         if st.button("View Profile", type="primary", key=f"btn_{animal.get('animal_id', i+j)}"):
                             st.session_state['selected_animal_id'] = animal.get('animal_id')
-                            st.switch_page('pages/02_Pet_Profile.py')
+                            st.switch_page('pages/34_Staff_Pet_Profile.py')
 

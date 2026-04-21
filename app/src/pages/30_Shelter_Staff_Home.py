@@ -27,5 +27,10 @@ if st.button('View Animal Medical Records',
              use_container_width=True):
     st.switch_page('pages/33_Medical_Records.py')
 
+if st.button('View Foster Placements',
+             type='primary',
+             use_container_width=True):
+    st.switch_page('pages/35_Foster_Placement.py')
+
 
 
