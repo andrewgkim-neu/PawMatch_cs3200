@@ -138,7 +138,7 @@ _Note_: This project only contains the infrastructure for a hypothetical ML mode
 Project Overview 
 ....
 ****************************************************************************************************************
-./app additions: 
+`./app` additions: 
 - We have 4 new users you can sign in as: 
 1. Lisa, the Adopter
 2. John, the System Admin
@@ -168,8 +168,8 @@ Each user has multiple pages attached to theirs
    - **Animal Medical Records** page: Ayla can view all medical records for animals in the shelter  
 
 ****************************************************************************************************************
-./api additions: 
+`./api` additions: 
 - 
 ****************************************************************************************************************
-./database-files additions: 
+`./database-files` additions: 
 - Added in our SQL data base with mock data for all tables 
