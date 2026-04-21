@@ -134,14 +134,17 @@ _Note_: This project only contains the infrastructure for a hypothetical ML mode
 1. The prediction route for the REST API is in `api/backend/simple/simple_routes.py`. Basically, it accepts two URL parameters and passes them to the `prediction` function in the `ml_models` module. The `prediction` route/function packages up the value(s) it receives from the model's `predict` function and sends it back to Streamlit as JSON.
 1. Back in Streamlit, check out `app/src/pages/11_Prediction.py`. Here, two numeric input fields are created. When the button is pressed, it makes a request to the REST API at `/prediction/{var_01}/{var_02}` and passes the values from the two inputs as URL path parameters. It gets back the results from the route and displays them.
 
-## Additions to README
-Project Overview 
+
+# Additions to README
+## Project Overview 
+PawMatch is a data-driven pet adoption system designed for a single animal shelter to manage its operations in one place. It tracks every animal from their first day at the shelter to their forever home — managing pet profiles, medical records, foster placements, and adoption applications so staff can stay organized and make better decisions for every animal in their care.
+
+
 Team Members: Ifeoluwa Adeyosoye, Sophia Romualdez, Elizabeth Colby, Andrew Kim
-....
 
 ****************************************************************************************************************
-`./app` additions: 
-- We have 4 new users you can sign in as: 
+## `./app` additions: 
+We have 4 new users you can sign in as: 
 1. Lisa, the Adopter
 2. John, the System Admin
 3. Lucy, the Data Analyst 
@@ -157,20 +160,36 @@ Each user has multiple pages attached to theirs
    - **Submit an Application** page: Lisa can submit a new adoption application for an animal 
 
 - John, the System Admin: 
+   - **Home** page: Directs to all of the other Adopter pages
+   - **Input New Animal** page: Allows John to add new animals/profile to the database
+   - **Manage Employees** page: John can view employees as wel as add and remove them
+   - **Audit Log** page: Allows John to view changes made to animal records as well as delete them
 
 - Lucy, the Data Analyst: 
+   - **Home** page: Directs to all of the other Adopter pages
    - **Live Dashboard** page: Lucy can view a live dashboard for the shelter with different metrics 
    - **Manage Adoptions** page: Lucy can manage reports for the shelter
    - **Adoption Trends** page: Lucy can view adoption trends for the shelter 
 
 - Ayla, the Staff Shelter Member: 
+   - **Home** page: Directs to all of the other Adopter pages
    - **Current Animals In Shelter** page: Ayla can view all current animals in the shelter 
    - **Adoption Applications** page: Ayla can view all adoption applications and their information
    - **Animal Medical Records** page: Ayla can view all medical records for animals in the shelter  
 
 ****************************************************************************************************************
-`./api` additions: 
+## `./api` additions: 
+- We have 6 blueprints: admin, adopters, animals, analytics, applications, and foster_placement
+   - **admin** — manages staff accounts, roles, permissions, and audit logs
+   - **adopters** — handles adopter profiles and management
+   - **animals** — manages animal profiles, medical records, flagged animals, and duplicate detection
+   - **analytics** — powers Lucy's dashboard, adoption trends, application funnel, and report generation
+   - **applications** — tracks adoption applications and their statuses
+   - **foster_placement** — manages foster home placements for animals
 
 ****************************************************************************************************************
-`./database-files` additions: 
+## `./database-files` additions: 
 - Added in our SQL data base with mock data for all tables 
+   - Schema includes tables for animals, adopters, staff, applications, adoptions, medical records, foster placements, report templates, monthly reports, and success stories 
+   - Mock data generated using Mockaroo
+   - Tables contain 40 rows
