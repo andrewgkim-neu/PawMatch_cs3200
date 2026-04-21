@@ -53,13 +53,21 @@ def system_admin_nav():
     st.sidebar.page_link(
         "pages/10_System_Admin_Home.py", label="System Admin Home", icon="🏠"
     )
-
+ 
 def add_new_animal_nav():
-    st.sidebar.page_link("pages/14_Add_New_Animal.py", label="Input New Animal", icon="📁")
-
-
+    st.sidebar.page_link(
+        "pages/14_Add_New_Animal.py", label="Input New Animal", icon="📁"
+    )
+ 
 def add_new_employee_nav():
-    st.sidebar.page_link("pages/15_Add_New_Employee.py", label="Add New Employee", icon="➕")
+    st.sidebar.page_link(
+        "pages/15_Add_New_Employee.py", label="Manage Employees", icon="➕"
+    )
+
+def audit_log_nav():
+    st.sidebar.page_link(
+        "pages/16_Audit_Log.py", label="Audit Log", icon="📋"
+    )
 
 # ---- Role: data_analyst ----------------------------------------------------
 
