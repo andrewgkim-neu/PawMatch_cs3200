@@ -16,12 +16,10 @@ st.caption("Stories and reviews from our past adopters.")
 
 
 # filters
-col1, col2, col3 = st.columns(3)
+col1, col2 = st.columns(2)
 with col1:
-    species_filter = st.selectbox("Species", ["All", "Dog", "Cat", "Rabbit", "Other"])
-with col2:
     rating_filter = st.selectbox("Rating", ["All", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"])
-with col3:
+with col2:
     sort_by = st.selectbox("Sort by", ["Highest rated", "Newest first", "Oldest first"])
 
 
@@ -50,8 +48,6 @@ sort_map = {
 
 params = {"sort": sort_map[sort_by]}
 
-if species_filter != "All":
-    params['species'] = species_filter
 
 rating_min, rating_max = rating_map[rating_filter]
 if rating_min:
