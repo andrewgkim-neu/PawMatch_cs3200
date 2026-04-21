@@ -136,6 +136,9 @@ _Note_: This project only contains the infrastructure for a hypothetical ML mode
 
 
 # Additions to README
+## VIDEO RECORDING
+<https://youtu.be/SLmng_xQKyU>
+
 ## Project Overview 
 PawMatch is a data-driven pet adoption system designed for a single animal shelter to manage its operations in one place. It tracks every animal from their first day at the shelter to their forever home — managing pet profiles, medical records, foster placements, and adoption applications so staff can stay organized and make better decisions for every animal in their care.
 

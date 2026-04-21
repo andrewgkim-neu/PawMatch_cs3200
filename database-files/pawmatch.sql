@@ -735,7 +735,7 @@ insert ignore into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) va
 insert ignore into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) values (23, 38, 4, 64);
 insert ignore into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) values (24, 21, 36, 47);
 insert ignore into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) values (25, 31, 7, 2);
-insert ignore into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) values (26, 11, 22, 81);
+insert ignore into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) values (26, 1 1, 22, 81);
 insert ignore into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) values (27, 1, 18, 11);
 insert ignore into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) values (28, 20, 23, 43);
 insert ignore into quiz_rec (rec_id, quiz_id, animal_id, compatibility_score) values (29, 18, 17, 50);
