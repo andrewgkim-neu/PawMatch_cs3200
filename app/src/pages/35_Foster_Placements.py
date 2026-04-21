@@ -11,7 +11,7 @@ SideBarLinks()
 st.title("🏠 PawMatch: Foster Placements")
 
 # -- API endpoint ---
-API_URL = "http://web-api:4000/animals/foster-placements"
+API_URL = "http://web-api:4000/foster_placements/"
 
 try: 
     response = requests.get(API_URL)
@@ -23,6 +23,8 @@ try:
 except requests.exceptions.RequestException as e:
     placements = []
     st.error(f"Error connecting to the API: {str(e)}")
+
+
 
 # search bar and filter
 search_col, filter_col = st.columns([4, 1]) 

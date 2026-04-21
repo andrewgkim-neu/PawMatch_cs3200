@@ -23,18 +23,21 @@ def get_applications():
 
         query = """
             SELECT app.application_id,
-                   CONCAT(ad.first_name, ' ', ad.last_name) AS adopter_name,
-                   an.name   AS animal_name,
-                   an.species,
-                   app.status,
-                   app.submission_date,
-                   app.decision_date,
-                   app.notes
+                CONCAT(ad.first_name, ' ', ad.last_name) AS adopter_name,
+                ad.email,
+                ad.phone,
+                ad.address,
+                an.name   AS animal_name,
+                an.species,
+                app.status,
+                app.submission_date,
+                app.decision_date,
+                app.notes
             FROM   application app
             JOIN   adopter ad ON app.adopter_id = ad.adopter_id
             JOIN   animal  an ON app.animal_id  = an.animal_id
             WHERE  1 = 1
-        """
+"""
         params = []
 
         if adopter_id:

@@ -85,12 +85,14 @@ with st.form('create_template_form'):
     if submitted:
         if not template_name:
             st.error('Template name is required!')
+        elif not metric_included:
+            st.error('Please select at least one metric!')
         else:
             try:
                 payload = {
                     'template_name': template_name,
                     'export_format': export_format,
-                    'metric_included': metric_included,
+                    'metric_included': ','.join(metric_included),  # join list to string
                     'date_range_start': str(date_range_start),
                     'date_range_end': str(date_range_end)
                 }
@@ -137,9 +139,11 @@ with st.form('generate_report_form'):
                 with col1:
                     st.metric('Total Adopted', stats.get('total_adopted', 0))
                 with col2:
-                    st.metric('Avg Days to Adopt', round(stats.get('avg_days_to_adopt') or 0, 1))
+                    val = stats.get('avg_days_to_adopt') or 0
+                    st.metric('Avg Days to Adopt', round(float(val), 1))
                 with col3:
-                    st.metric('Avg Length of Stay', round(stats.get('avg_length_of_stay') or 0, 1))
+                    val = stats.get('avg_length_of_stay') or 0
+                    st.metric('Avg Length of Stay', round(float(val), 1))
             else:
                 st.error(f'Error: {r.json()}')
         except Exception as e:
@@ -162,3 +166,4 @@ try:
 
 except Exception as e:
     st.error(f'Could not load monthly reports. Error: {e}')
+

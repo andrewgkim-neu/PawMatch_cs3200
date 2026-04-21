@@ -148,24 +148,24 @@ def get_flagged_animals():
 def get_duplicate_animals():
     cursor = get_db().cursor(dictionary=True)
     try:
-        current_app.logger.info("GET /a/duplicates")
+        current_app.logger.info("GET /animals/duplicates")
 
         cursor.execute(
             """
-            SELECT a1.animal_id AS record_1_id,
-                   a2.animal_id AS record_2_id,
-                   a1.name,
-                   a1.species
-            FROM   animal a1
-            JOIN   animal a2
-                   ON  a1.animal_id < a2.animal_id
-                   AND a1.name      = a2.name
-                   AND a1.species   = a2.species
+            SELECT animal_id, name, species, breed, status
+            FROM   animal
+            WHERE  (name, species, breed) IN (
+                SELECT name, species, breed
+                FROM   animal
+                GROUP  BY name, species, breed
+                HAVING COUNT(*) > 1
+            )
+            ORDER  BY name, species, breed, animal_id
             """
         )
         duplicates = cursor.fetchall()
 
-        current_app.logger.info(f"Found {len(duplicates)} duplicate pairs")
+        current_app.logger.info(f"Found {len(duplicates)} potential duplicate animals")
         return jsonify(duplicates), 200
     except Error as e:
         current_app.logger.error(f"Database error in get_duplicate_animals: {e}")

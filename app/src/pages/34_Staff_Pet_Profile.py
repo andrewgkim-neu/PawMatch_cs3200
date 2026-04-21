@@ -52,7 +52,7 @@ if not animal:
     st.stop()
 
 if st.button("Back to Browse"):
-    st.switch_page('pages/01_Browse_Animals.py')
+    st.switch_page('pages/31_Current_Animals.py')
 
 st.title(f"All About {animal.get('name', 'Unknown')}:")
 st.divider()
@@ -82,8 +82,27 @@ with info_col:
         st.write(animal.get('breed', 'N/A'))
         st.markdown("**Age**")
         st.write(age_str)
+        # Flagged toggle
+        current_flagged = animal.get('flagged', 0)
         st.markdown("**Flagged**")
-        st.write(flagged)
+        new_flagged = st.toggle(
+            "🚩 Flag this animal",
+            value=bool(current_flagged),
+            key="flag_toggle"
+        )
+        if new_flagged != bool(current_flagged):
+            try:
+                r = requests.put(
+                    f"{API}/animals/{animal_id}",
+                    json={"flagged": int(new_flagged)}
+                )
+                if r.status_code == 200:
+                    st.success("Flagged status updated!")
+                    st.rerun()
+                else:
+                    st.error("Failed to update flagged status.")
+            except requests.exceptions.RequestException as e:
+                st.error(f"Error: {str(e)}")
 
     with col2:
         ## ADD ENERGY LEVEL DATA
