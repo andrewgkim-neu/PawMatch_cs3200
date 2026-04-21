@@ -70,7 +70,13 @@ st.subheader('Create a New Report Template')
 with st.form('create_template_form'):
     template_name = st.text_input('Template Name')
     export_format = st.selectbox('Export Format', ['PDF', 'CSV', 'Excel'])
-    metric_included = st.text_input('Metric Included', value='Total Adopted')
+    metric_included = st.selectbox('Metric Included', [
+    'Total Adopted',
+    'Average Days to Adopt',
+    'Average Length of Stay',
+    'Species Breakdown',
+    'Intake Count'
+])
     date_range_start = st.date_input('Date Range Start')
     date_range_end = st.date_input('Date Range End')
 
