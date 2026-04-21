@@ -24,7 +24,7 @@ with col2:
 with col3:
     sort_by = st.selectbox("Sort by", ["Highest rated", "Newest first", "Oldest first"])
 
-search_query = st.text_input("Search stories", placeholder = "Search by keyword")
+
 
 
 # params
@@ -58,8 +58,6 @@ if rating_min:
     params["rating_min"] = rating_min
     params["rating_max"] = rating_max 
 
-if search_query:
-    params["search"] = search_query
 
 
 # pages
