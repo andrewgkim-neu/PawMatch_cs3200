@@ -52,7 +52,7 @@ if not animal:
     st.stop()
 
 if st.button("Back to Browse"):
-    st.switch_page('pages/01_Browse_Animals.py')
+    st.switch_page('pages/31_Current_Animals.py')
 
 st.title(f"All About {animal.get('name', 'Unknown')}:")
 st.divider()

@@ -13,6 +13,7 @@ st.title("📋 PawMatch: Adoption Applications")
 # -- API endpoint for applications ---
 API_URL = "http://web-api:4000/adopters/applications"
 
+
 try: 
     response = requests.get(API_URL)
     if response.status_code == 200:
@@ -49,6 +50,9 @@ for app in filtered:
     animal = app.get("animal_name", "N/A")
     species = app.get("species", "")
     status = app.get("status", "N/A")
+    address = app.get("address", "N/A")
+    email = app.get("email", "N/A")
+    phone = app.get("phone", "N/A")
     
     status_emoji = {
         "Pending": "⏳", "Under Review": "🔍", "Approved": "✅",
@@ -61,11 +65,14 @@ for app in filtered:
             st.write(f"**Adopter:** {adopter}")
             st.write(f"**Animal:** {animal}")
             st.write(f"**Species:** {species}")
+            st.write(f"**Adopter Address:** {address}")
         with c2:
             st.write(f"**Status:** {status_emoji} {status}")
             st.write(f"**Submitted:** {app.get('submission_date', 'N/A')}")
             decision = app.get("decision_date", None)
             st.write(f"**Decision Date:** {decision if decision else 'Pending'}")
+            st.write(f"**Phone Number:** {phone}")
+            st.write(f"**Email:** {email}")
         
         notes = app.get("notes", None)
         if notes:
