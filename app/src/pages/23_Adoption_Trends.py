@@ -35,12 +35,21 @@ if st.button('Search Trends', type='primary', use_container_width=True):
 
         if trends:
             df = pd.DataFrame(trends)
-            df.columns = ['Species', 'Breed', 'Year', 'Month', 'Total Adoptions', 'Avg Days to Adopt']
+
+            # Rename by actual API key names instead of position
+            df = df.rename(columns={
+                'species':         'Species',
+                'breed':           'Breed',
+                'year':            'Year',
+                'month':           'Month',
+                'total_adoptions': 'Total Adoptions',
+                'avg_days_to_adopt': 'Avg Days to Adopt'
+            })
+
             st.dataframe(df, use_container_width=True)
 
             st.divider()
 
-            # Chart
             st.write('#### Avg Days to Adopt Over Time')
             chart_df = df[['Month', 'Avg Days to Adopt']].copy()
             st.line_chart(chart_df.set_index('Month'))
@@ -64,13 +73,17 @@ try:
         col1, col2 = st.columns(2)
 
         with col1:
-            # Table
             funnel_df = pd.DataFrame(funnel)
-            funnel_df.columns = ['Status', 'Total']
+
+            # Rename by actual API key names instead of position
+            funnel_df = funnel_df.rename(columns={
+                'status': 'Status',
+                'total':  'Total'
+            })
+
             st.dataframe(funnel_df, use_container_width=True)
 
         with col2:
-            # Bar chart
             st.write('#### Applications by Status')
             chart_df = funnel_df.set_index('Status')
             st.bar_chart(chart_df)
@@ -79,4 +92,4 @@ try:
         st.info('No application data found.')
 
 except Exception as e:
-    st.error(f'Could not load application funnel. Error: {e}') 
+    st.error(f'Could not load application funnel. Error: {e}')
