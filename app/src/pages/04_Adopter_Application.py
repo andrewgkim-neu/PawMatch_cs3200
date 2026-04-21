@@ -2,7 +2,6 @@ import logging
 logger = logging.getLogger(__name__)
 import streamlit as st
 import requests
-from datetime import datetime, time, timedelta
 from urllib.error import URLError
 from modules.nav import SideBarLinks
 
@@ -22,7 +21,7 @@ st.write("Complete this form to begin your application process.")
 st.divider()
 
 # default variables
-first_name = last_name = email = phone = address = city = state = housing_type = rent = other_pets = notes = ""
+first_name = last_name = email = phone = address = housing_type = rent = other_pets = notes = ""
 
 
 if not st.session_state.get('application_submitted'):
@@ -50,11 +49,11 @@ if not st.session_state.get('application_submitted'):
         # warning for animals with status == 'Pending Adoption'
         if selected['status'] == 'Pending Adoption':
             st.warning(
-            f"**{selected['name']} has a pending application.**"
-            "\n Another applicant has submitted an application for this animal, but you can still apply."
-            f"We will reach out to you with updates in {animal_name}'s status. Please reach out with any questions."
-        )
-            
+                f"**{selected['name']} has a pending application.**"
+                "\n Another applicant has submitted an application for this animal, but you can still apply. "
+                f"We will reach out to you with updates in {selected['name']}'s status. Please reach out with any questions."
+            )
+
         # warning for animals with status == 'Fostered'
         if selected['status'] == 'Fostered':
             st.warning(
@@ -68,7 +67,6 @@ if not st.session_state.get('application_submitted'):
         st.session_state.pop('selected_animal_status', None)
 
     st.divider()
-
 
     # adopter info
     st.subheader("Your Information")
@@ -86,14 +84,13 @@ if not st.session_state.get('application_submitted'):
     with col4:
         phone = st.text_input("Phone Number")
 
-    col5, = st.columns(2)
+    col5, col6 = st.columns(2)
     with col5:
         address = st.text_input("Street Address")
 
     st.divider()
 
-
-    #living situation
+    # living situation
     st.subheader("Housing Details")
 
     col8, col9 = st.columns(2)
@@ -102,24 +99,71 @@ if not st.session_state.get('application_submitted'):
     with col9:
         rent = st.selectbox("Do you own or rent?", ["", "Own", "Rent"])
 
-    other_pets = st.selectbox("Do you have any other pets at home?", 
-                            ["", "No", "Yes - dog", "Yes - cat", "Yes - other", "Yes - multiple others"])
+    other_pets = st.selectbox("Do you have any other pets at home?",
+                              ["", "No", "Yes - dog", "Yes - cat", "Yes - other", "Yes - multiple others"])
 
     st.divider()
 
     # additional notes/comments
     st.subheader("Additional Information")
 
-    notes = st.text_area("Anything else you would to share? (optional)", placeholder = "Share any questions, more information about your lifestyle, or why you love this animal!")
+    notes = st.text_area("Anything else you would like to share? (optional)",
+                         placeholder="Share any questions, more information about your lifestyle, or why you love this animal!")
 
     st.divider()
 
 
+def submit_application():
+    """Call the adopter update + application submit endpoints."""
+    current_animal_id = st.session_state.get('selected_animal_id')
+
+    # 1. Update adopter info if we have an adopter_id
+    if adopter_id:
+        adopter_payload = {}
+        if first_name:  adopter_payload['first_name'] = first_name
+        if last_name:   adopter_payload['last_name']  = last_name
+        if email:       adopter_payload['email']      = email
+        if phone:       adopter_payload['phone']      = phone
+        if address:     adopter_payload['address']    = address
+
+        if adopter_payload:
+            try:
+                res = requests.put(f"{API}/adopters/{adopter_id}", json=adopter_payload)
+                if res.status_code != 200:
+                    st.error(f"Could not update your profile: {res.json().get('error', 'Unknown error')}")
+                    return False
+            except Exception as e:
+                st.error(f"Could not reach the server: {e}")
+                return False
+
+    # 2. Submit the application
+    app_payload = {
+        "adopter_id": adopter_id,
+        "animal_id":  current_animal_id,
+        "notes":      notes or None,
+    }
+    try:
+        res = requests.post(f"{API}/adopters/applications", json=app_payload)
+        if res.status_code == 201:
+            return True
+        elif res.status_code == 409:
+            st.error("This animal is no longer available for adoption.")
+            return False
+        else:
+            st.error(f"Submission failed: {res.json().get('error', 'Unknown error')}")
+            return False
+    except Exception as e:
+        st.error(f"Could not reach the server: {e}")
+        return False
+
+
 # submit the application
 if not st.session_state.get('application_submitted'):
-    if st.button("Submit Application", type = "primary", use_container_width = True):
+    if st.button("Submit Application", type="primary", use_container_width=True):
         animal_status = st.session_state.get('selected_animal_status', 'Available')
-        if not animal_id or not adopter_id:
+        current_animal_id = st.session_state.get('selected_animal_id')
+
+        if not current_animal_id or not adopter_id:
             st.error("Missing animal or adopter information. Please try again.")
         elif not first_name or not last_name:
             st.error("Please enter your full name.")
@@ -131,29 +175,34 @@ if not st.session_state.get('application_submitted'):
             st.session_state['awaiting_pending_confirm'] = True
             st.rerun()
         else:
-            st.session_state['application_submitted'] = True
-            st.rerun()
+            if submit_application():
+                st.session_state['application_submitted'] = True
+                st.rerun()
+
 
 # 'Pending Adoption' warning before submission
 if st.session_state.get('awaiting_pending_confirm'):
     st.warning("There is another application pending ahead of yours, would you still like to submit?")
     col1, col2 = st.columns(2)
     with col1:
-        confirm = st.button("Yes, submit anyway", type = "primary", use_container_width = True)
+        confirm = st.button("Yes, submit anyway", type="primary", use_container_width=True)
     with col2:
-        cancel = st.button("Cancel submission",use_container_width = True)
+        cancel = st.button("Cancel submission", use_container_width=True)
 
     if confirm:
         st.session_state.pop('awaiting_pending_confirm', None)
-        st.session_state['application_submitted'] = True
-        st.rerun()
+        if submit_application():
+            st.session_state['application_submitted'] = True
+            st.rerun()
 
     if cancel:
         st.session_state.pop('awaiting_pending_confirm', None)
         st.rerun()
-        
+
+
 if st.session_state.get('application_submitted'):
     animal_status = st.session_state.get('selected_animal_status', 'Available')
+    animal_name = st.session_state.get('selected_animal_name', 'this pet')
     if animal_status == 'Pending Adoption':
         st.success(f"Your application for {animal_name} has been submitted and added to the queue!")
         st.info("We will contact you with any updates in status. Please reach out with any questions.")
@@ -162,7 +211,7 @@ if st.session_state.get('application_submitted'):
         st.info("We will reach out soon with next steps. Please reach out with any questions.")
 
     st.balloons()
-    if st.button("Start a New Application", type = "primary", use_container_width = True):
+    if st.button("Start a New Application", type="primary", use_container_width=True):
         st.session_state.pop('application_submitted', None)
         st.session_state.pop('selected_animal_id', None)
         st.session_state.pop('selected_animal_name', None)
@@ -175,9 +224,6 @@ animal_name = st.session_state.get('selected_animal_name', 'Pet')
 if st.button(f"Go to {animal_name}'s Profile"):
     st.switch_page('pages/02_Pet_Profile.py')
 
-
 # button to go back to home page
 if st.button("Return to Home"):
     st.switch_page("00_Adopter.py")
-
-

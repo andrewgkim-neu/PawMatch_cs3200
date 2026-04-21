@@ -90,12 +90,61 @@ def submit_application():
                 data.get("notes"),
             ),
         )
+
+        new_application_id = cursor.lastrowid
+        cursor.execute("SELECT status FROM animal WHERE animal_id = %s", (data['animal_id'],))
+        animal = cursor.fetchone()
+        if animal and animal['status'] == 'Available':
+            cursor.execute(
+                "UPDATE animal SET status = 'Pending Adoption' WHERE animal_id = %s",
+                (data['animal_id'],),
+            )
         get_db().commit()
 
-        current_app.logger.info(f"submit_application(): created application_id={cursor.lastrowid}")
+        current_app.logger.info(f"submit_application(): created application_id={new_application_id}")
         return jsonify({"message": "Application submitted successfully", "application_id": cursor.lastrowid}), 201
     except Error as e:
         current_app.logger.error(f"Database error in submit_application: {e}")
+        return jsonify({"error": str(e)}), 500
+    finally:
+        cursor.close()
+
+# ------------------------------------------------------------
+# PUT /adopters/<adopter_id>
+# Update adopter profile info (name, email, phone, address).
+# User stories: [Lisa-2]
+# ------------------------------------------------------------
+@adopters.route("/<int:adopter_id>", methods=["PUT"])
+def update_adopter(adopter_id):
+    cursor = get_db().cursor(dictionary=True)
+    try:
+        data = request.get_json()
+ 
+        cursor.execute(
+            "SELECT adopter_id FROM adopter WHERE adopter_id = %s",
+            (adopter_id,),
+        )
+        if not cursor.fetchone():
+            return jsonify({"error": "Adopter not found"}), 404
+ 
+        allowed_fields = ["first_name", "last_name", "email", "phone", "address"]
+        update_fields = [f"{f} = %s" for f in allowed_fields if f in data]
+        params = [data[f] for f in allowed_fields if f in data]
+ 
+        if not update_fields:
+            return jsonify({"error": "No valid fields to update"}), 400
+ 
+        params.append(adopter_id)
+        cursor.execute(
+            f"UPDATE adopter SET {', '.join(update_fields)} WHERE adopter_id = %s",
+            params,
+        )
+        get_db().commit()
+ 
+        current_app.logger.info(f"update_adopter(): updated adopter_id={adopter_id}")
+        return jsonify({"message": "Adopter updated successfully"}), 200
+    except Error as e:
+        current_app.logger.error(f"Database error in update_adopter: {e}")
         return jsonify({"error": str(e)}), 500
     finally:
         cursor.close()
