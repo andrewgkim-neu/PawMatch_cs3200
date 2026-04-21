@@ -111,6 +111,11 @@ def medical_records_nav():
         "pages/33_Medical_Records.py", label="Animal Medical Records", icon="💉"
     )
 
+def foster_placements_nav():
+    st.sidebar.page_link(
+        "pages/35_Foster_Placements.py", label="Foster Placements", icon="🏠"
+    )
+
 # ---- Sidebar assembly -------------------------------------------------------
 
 def SideBarLinks(show_home=False):
@@ -157,6 +162,7 @@ def SideBarLinks(show_home=False):
             current_animals_nav()
             adoption_applications_nav()
             medical_records_nav()
+            foster_placements_nav()
 
     # About link appears at the bottom for all roles
     about_page_nav()

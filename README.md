@@ -137,6 +137,7 @@ _Note_: This project only contains the infrastructure for a hypothetical ML mode
 ## Additions to README
 Project Overview 
 ....
+
 ****************************************************************************************************************
 `./app` additions: 
 - We have 4 new users you can sign in as: 
@@ -155,7 +156,6 @@ Each user has multiple pages attached to theirs
    - **Submit an Application** page: Lisa can submit a new adoption application for an animal 
 
 - John, the System Admin: 
-   - 
 
 - Lucy, the Data Analyst: 
    - **Live Dashboard** page: Lucy can view a live dashboard for the shelter with different metrics 
@@ -169,7 +169,7 @@ Each user has multiple pages attached to theirs
 
 ****************************************************************************************************************
 `./api` additions: 
-- 
+
 ****************************************************************************************************************
 `./database-files` additions: 
 - Added in our SQL data base with mock data for all tables 

@@ -62,18 +62,18 @@ for i in range(0, len(filtered), cols_per_row):
                     st.write(f"**Breed:** {animal.get('breed', 'N/A')}")
                     st.write(f"**Status:** {animal.get('status', 'N/A')}")
                     flagged_result = animal.get('flagged', 'N/A')
-                    if flagged_result == 0:
+                    if flagged_result == 1:
                         st.write(f"**Flagged:** 🚩 Yes")
-                    elif flagged_result == 1: 
+                    elif flagged_result == 0: 
                         st.write(f"**Flagged:** ✅ No")
                     else:
-                        st.writest.write(f"**Flagged:** N/A")
+                        st.write("**Flagged:** N/A")
                     st.write(f"**Age (Months):** {animal.get('age_months', 'N/A')}")
                     st.write(f"**Intake Date:** {animal.get('intake_date', 'N/A')}")
 
                     # TODO Button to view full profile (will connect to adopter specific_animal page ?)
-                    if st.button("View Details", key=f"view_{animal.get('Animal_ID', i+j)}"):
-                        st.session_state["selected_animal_id"] = animal.get("Animal_ID")
-                        st.switch_page("pages/34_Animal_Details.py")
+                    if st.button("View Details", key=f"view_{animal.get('animal_id', i+j)}"):
+                        st.session_state["selected_animal_id"] = animal.get("animal_id")
+                        st.switch_page("pages/34_Staff_Pet_Profile.py")
 
                 
