@@ -86,15 +86,9 @@ if not st.session_state.get('application_submitted'):
     with col4:
         phone = st.text_input("Phone Number")
 
-    col5, col6 = st.columns(2)
+    col5, = st.columns(2)
     with col5:
         address = st.text_input("Street Address")
-    with col6:
-        city = st.text_input("City")
-
-    col7, = st.columns(1)
-    with col7:
-        state = st.text_input("State")
 
     st.divider()
 
